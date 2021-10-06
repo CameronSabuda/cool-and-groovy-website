@@ -2,12 +2,21 @@ package com.getyourway.api.controllers;
 
 import com.getyourway.api.services.WeatherService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.io.IOException;
+
+@RestController
 public class WeatherController {
     private WeatherService service;
 
     public WeatherController(WeatherService service) {
         this.service = service;
+    }
+
+    @GetMapping("/weather")
+    public String weather() throws IOException {
+        return service.makeRequest();
     }
 }
