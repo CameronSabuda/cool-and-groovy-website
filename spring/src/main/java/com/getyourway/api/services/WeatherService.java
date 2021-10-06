@@ -23,12 +23,21 @@ public class WeatherService {
     public String makeRequest() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
+        String city = "Paris";
+
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("https")
+                .host("api.openweathermap.org")
+                .addPathSegment("data")
+                .addPathSegment("2.5")
+                .addPathSegment("forecast")
+                .addQueryParameter("q",city)
+                .addQueryParameter("appid",OPENWEATHERMAP_API_KEY)
+                .build();
 
         Request request = new Request.Builder()
-                .url("https://community-open-weather-map.p.rapidapi.com/forecast?q=Paris&units=metric")
+                .url(url)
                 .get()
-                .addHeader("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", "OPENWEATHERMAP_API_KEY")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -36,21 +45,3 @@ public class WeatherService {
         }
     }
 }
-
-
-
-// OkHttpClient client = new OkHttpClient();
-//
-// HttpUrl.Builder urlBuilder = HttpUrl.parse("https://community-open-weather-map.p.rapidapi.com/forecast").newBuilder();
-// urlBuilder.addQueryParameter("q", "Paris");
-// urlBuilder.addQueryParameter("units", "metric");
-// String url = urlBuilder.build().toString();
-//
-// Request request = new Request.Builder()
-//         .header("Authorization",OPENWEATHERMAP_API_KEY)
-//         .url(url)
-//         .build();
-//
-//
-// Response response = client.newCall(request).execute();
-// return response.body().string();
