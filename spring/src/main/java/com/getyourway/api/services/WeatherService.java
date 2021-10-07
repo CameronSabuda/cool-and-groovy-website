@@ -1,18 +1,15 @@
 package com.getyourway.api.services;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import okhttp3.HttpUrl;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import okhttp3.*;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Base64;
 
 @Service
 public class WeatherService {
@@ -25,6 +22,7 @@ public class WeatherService {
         OkHttpClient client = new OkHttpClient();
         String city = "Paris";
 
+        // Building the URL to get request
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("https")
                 .host("api.openweathermap.org")
@@ -40,8 +38,11 @@ public class WeatherService {
                 .get()
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }
+        Gson gson = new Gson();
+        ResponseBody responseBody = client.newCall(request).execute().body();
+        return responseBody.string();
+        
+
     }
 }
+
