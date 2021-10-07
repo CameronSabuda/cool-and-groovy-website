@@ -21,7 +21,7 @@ public class WeatherController {
     @GetMapping("/weather")
     public String weather(@RequestParam double latitude, @RequestParam double longitude) {
         try {
-            return service.makeRequest(latitude, longitude);
+            return service.getFiveDayWeatherForecast(latitude, longitude);
         } catch (IOException e){
             e.printStackTrace();
             return null;

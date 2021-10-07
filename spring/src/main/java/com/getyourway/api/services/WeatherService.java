@@ -16,8 +16,9 @@ public class WeatherService {
     @Value("${openweathermap.api-key}")
     private String OPENWEATHERMAP_API_KEY;
 
-    public String makeRequest(double latitude, double longitude) throws IOException {
+    public String getFiveDayWeatherForecast(double latitude, double longitude) throws IOException {
 
+        // We're using okHttp due cleaner code syntax
         OkHttpClient client = new OkHttpClient();
         String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude +"&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
 
@@ -26,18 +27,19 @@ public class WeatherService {
                 .get()
                 .build();
 
+        // Using Gson due to great performance, and more understandable methods for parsing json object
         Gson gson = new Gson();
         ResponseBody responseBody = client.newCall(request).execute().body();
         String responseBodyString = responseBody.string();
 
         JsonElement oldJsonElement = new Gson().fromJson(responseBodyString, JsonElement.class);
-        JsonObject oldJsonObject = oldJsonElement.getAsJsonObject();
-        JsonObject newJsonObject = new JsonObject();
+        JsonObject returnedJsonObject = oldJsonElement.getAsJsonObject();
+        JsonObject formattedJsonObject = new JsonObject();
 
-        JsonArray oldWeatherData = oldJsonObject.get("list").getAsJsonArray();
-        JsonArray newWeatherData = new JsonArray();
+        JsonArray returnedWeatherData = returnedJsonObject.get("list").getAsJsonArray();
+        JsonArray formattedWeatherData = new JsonArray();
 
-        for (JsonElement oldWeather: oldWeatherData) {
+        for (JsonElement oldWeather: returnedWeatherData) {
             JsonObject oldWeatherObject = oldWeather.getAsJsonObject();
 
             JsonObject newWeather = new JsonObject();
@@ -49,14 +51,12 @@ public class WeatherService {
             newWeather.add("chance_of_rain", oldWeatherObject.get("pop"));
             newWeather.add("weather", oldWeatherObject.get("weather").getAsJsonArray());
 
-
-
-            newWeatherData.add(newWeather);
+            formattedWeatherData.add(newWeather);
         }
 
-        newJsonObject.add("weather", newWeatherData);
+        formattedJsonObject.add("weather", formattedWeatherData);
 
-        return newJsonObject.toString();
+        return formattedJsonObject.toString();
     }
 
     private String formatDate(String unixString){
