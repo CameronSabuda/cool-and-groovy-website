@@ -2,6 +2,7 @@ package com.getyourway.api.controllers;
 
 import com.getyourway.api.services.WeatherService;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

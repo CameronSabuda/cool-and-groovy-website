@@ -1,11 +1,7 @@
 package com.getyourway.api.services;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import okhttp3.*;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
@@ -21,17 +17,7 @@ public class WeatherService {
 
         OkHttpClient client = new OkHttpClient();
         String city = "Paris";
-
-        // Building the URL to get request
-        HttpUrl url = new HttpUrl.Builder()
-                .scheme("https")
-                .host("api.openweathermap.org")
-                .addPathSegment("data")
-                .addPathSegment("2.5")
-                .addPathSegment("forecast")
-                .addQueryParameter("q",city)
-                .addQueryParameter("appid",OPENWEATHERMAP_API_KEY)
-                .build();
+        String url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
 
         Request request = new Request.Builder()
                 .url(url)
@@ -40,9 +26,31 @@ public class WeatherService {
 
         Gson gson = new Gson();
         ResponseBody responseBody = client.newCall(request).execute().body();
-        return responseBody.string();
-        
+        String responseBodyString = responseBody.string();
 
+        JsonElement oldJsonElement = new Gson().fromJson(responseBodyString, JsonElement.class);
+        JsonObject oldJsonObject = oldJsonElement.getAsJsonObject();
+        JsonObject newJsonObject = new JsonObject();
+
+        JsonArray oldWeatherData = oldJsonObject.get("list").getAsJsonArray();
+        JsonArray newWeatherData = new JsonArray();
+
+        for (JsonElement oldWeather: oldWeatherData) {
+            JsonObject oldWeatherObject = oldWeather.getAsJsonObject();
+
+            JsonObject newWeather = new JsonObject();
+
+            newWeather.add("date", oldWeatherObject.get("dt_txt"));
+            newWeather.add("temp", oldWeatherObject.get("main").getAsJsonObject().get("temp"));
+            newWeather.add("chance_of_rain", oldWeatherObject.get("pop"));
+            newWeather.add("weather", oldWeatherObject.get("weather").getAsJsonArray());
+
+            newWeatherData.add(newWeather);
+        }
+
+        newJsonObject.add("weather", newWeatherData);
+
+        return newJsonObject.toString();
     }
 }
 
