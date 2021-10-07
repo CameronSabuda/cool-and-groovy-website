@@ -42,28 +42,30 @@ public class EventsService {
         for (JsonElement oldEvent: oldEvents) {
             JsonObject oldEventObject = oldEvent.getAsJsonObject();
 
-            JsonObject newEvent = new JsonObject();
+            if (!oldEventObject.get("category").getAsString().matches("observances|daylight-savings")) {
+                JsonObject newEvent = new JsonObject();
 
-            newEvent.add("title", oldEventObject.get("title"));
-            newEvent.add("description", oldEventObject.get("description"));
+                newEvent.add("title", oldEventObject.get("title"));
+                newEvent.add("description", oldEventObject.get("description"));
 
-            newEvent.add("start_date", new JsonPrimitive(formatDate(oldEventObject.get("start").getAsString())));
+                newEvent.add("start_date", new JsonPrimitive(formatDate(oldEventObject.get("start").getAsString())));
 
-            newEvent.add("end_date", new JsonPrimitive(formatDate(oldEventObject.get("end").getAsString())));
+                newEvent.add("end_date", new JsonPrimitive(formatDate(oldEventObject.get("end").getAsString())));
 
-            JsonElement locationElement = oldEventObject.get("location");
-            newEvent.add("location_of_event", locationElement);
+                JsonElement locationElement = oldEventObject.get("location");
+                newEvent.add("location_of_event", locationElement);
 
-            JsonArray locationArray = locationElement.getAsJsonArray();
-            double eventLatitude = locationArray.get(1).getAsDouble();
-            double eventLongitude = locationArray.get(0).getAsDouble();
+                JsonArray locationArray = locationElement.getAsJsonArray();
+                double eventLatitude = locationArray.get(1).getAsDouble();
+                double eventLongitude = locationArray.get(0).getAsDouble();
 
-            // calculate distance
-            String distance = String.format("%.3fkm", distance(latitude, longitude, eventLatitude, eventLongitude));
-            newEvent.add("distance_from_location", new JsonPrimitive(distance));
-            newEvent.add("labels", oldEventObject.get("labels"));
+                // calculate distance
+                String distance = String.format("%.3fkm", distance(latitude, longitude, eventLatitude, eventLongitude));
+                newEvent.add("distance_from_location", new JsonPrimitive(distance));
+                newEvent.add("labels", oldEventObject.get("labels"));
 
-            newEvents.add(newEvent);
+                newEvents.add(newEvent);
+            }
         }
 
         newJsonObject.add("events", newEvents);
