@@ -5,6 +5,9 @@ import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 @Service
@@ -13,11 +16,10 @@ public class WeatherService {
     @Value("${openweathermap.api-key}")
     private String OPENWEATHERMAP_API_KEY;
 
-    public String makeRequest() throws IOException {
+    public String makeRequest(double latitude, double longitude) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
-        String city = "Paris";
-        String url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
+        String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude +"&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
 
         Request request = new Request.Builder()
                 .url(url)
@@ -40,10 +42,14 @@ public class WeatherService {
 
             JsonObject newWeather = new JsonObject();
 
-            newWeather.add("date", oldWeatherObject.get("dt_txt"));
+            String unixTimestamp = oldWeatherObject.get("dt").getAsString();
+            String date = formatDate(unixTimestamp);
+            newWeather.add("date",new JsonPrimitive(date));
             newWeather.add("temp", oldWeatherObject.get("main").getAsJsonObject().get("temp"));
             newWeather.add("chance_of_rain", oldWeatherObject.get("pop"));
             newWeather.add("weather", oldWeatherObject.get("weather").getAsJsonArray());
+
+
 
             newWeatherData.add(newWeather);
         }
@@ -51,6 +57,15 @@ public class WeatherService {
         newJsonObject.add("weather", newWeatherData);
 
         return newJsonObject.toString();
+    }
+
+    private String formatDate(String unixString){
+        long unixSeconds = Long.parseLong(unixString);
+        Date date = new Date(unixSeconds*1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
+
+        return sdf.format(date);
     }
 }
 

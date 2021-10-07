@@ -5,6 +5,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -18,10 +19,10 @@ public class WeatherController {
     }
 
     @GetMapping("/weather")
-    public String weather() throws IOException {
+    public String weather(@RequestParam double latitude, @RequestParam double longitude) {
         try {
-            return service.makeRequest();
-        } catch (IOException | JsonIOException e){
+            return service.makeRequest(latitude, longitude);
+        } catch (IOException e){
             e.printStackTrace();
             return null;
         }
