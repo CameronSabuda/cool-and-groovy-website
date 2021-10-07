@@ -20,7 +20,7 @@ public class EventsController {
     @GetMapping("/events")
     public String getEventsWithin5km(@RequestParam double latitude, @RequestParam double longitude) {
         try {
-            return service.makeRequest(latitude, longitude);
+            return service.getEventsWithin5km(latitude, longitude);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
