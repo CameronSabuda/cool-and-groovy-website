@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class EventsService {
@@ -46,8 +46,10 @@ public class EventsService {
 
             newEvent.add("title", oldEventObject.get("title"));
             newEvent.add("description", oldEventObject.get("description"));
-            newEvent.add("start_date", oldEventObject.get("start"));
-            newEvent.add("end_date", oldEventObject.get("end"));
+
+            newEvent.add("start_date", new JsonPrimitive(formatDate(oldEventObject.get("start").getAsString())));
+
+            newEvent.add("end_date", new JsonPrimitive(formatDate(oldEventObject.get("end").getAsString())));
 
             JsonElement locationElement = oldEventObject.get("location");
             newEvent.add("location_of_event", locationElement);
@@ -57,7 +59,7 @@ public class EventsService {
             double eventLongitude = locationArray.get(0).getAsDouble();
 
             // calculate distance
-            String distance = distance(latitude, longitude, eventLatitude, eventLongitude) + "km";
+            String distance = String.format("%.3fkm", distance(latitude, longitude, eventLatitude, eventLongitude));
             newEvent.add("distance_from_location", new JsonPrimitive(distance));
             newEvent.add("labels", oldEventObject.get("labels"));
 
@@ -67,6 +69,12 @@ public class EventsService {
         newJsonObject.add("events", newEvents);
 
         return newJsonObject.toString();
+    }
+
+    private String formatDate(String dateString) {
+        LocalDateTime startDate = LocalDateTime.parse(dateString,
+                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+        return startDate.format(DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss"));
     }
 
     private double distance(double lat1, double lon1, double lat2, double lon2) {
