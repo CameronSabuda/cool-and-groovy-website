@@ -16,8 +16,43 @@ public class WeatherService {
     @Value("${openweathermap.api-key}")
     private String OPENWEATHERMAP_API_KEY;
 
-    public String makeRequest(double latitude, double longitude) throws IOException {
+    public String getFiveDayForecast(double latitude, double longitude) throws IOException {
 
+        JsonObject unfilteredJsonObject = fetchWeatherData(latitude, longitude);
+
+
+        return filterExternalJsonObject(unfilteredJsonObject).toString();
+    }
+
+    private JsonObject filterExternalJsonObject(JsonObject unfilteredJsonObject) {
+        JsonArray unfilteredWeatherDataList = unfilteredJsonObject.get("list").getAsJsonArray();
+        JsonArray filteredWeatherDataList = new JsonArray();
+
+        for (JsonElement unfilteredWeatherDataElement: unfilteredWeatherDataList) {
+            JsonObject unfilteredWeatherDataObject = unfilteredWeatherDataElement.getAsJsonObject();
+
+            JsonObject filteredWeatherDataItem = new JsonObject();
+
+            String unixTimestamp = unfilteredWeatherDataObject.get("dt").getAsString();
+            String date = formatDate(unixTimestamp);
+            filteredWeatherDataItem.add("date",new JsonPrimitive(date));
+            filteredWeatherDataItem.add("temp", unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp"));
+            filteredWeatherDataItem.add("chance_of_rain", unfilteredWeatherDataObject.get("pop"));
+            filteredWeatherDataItem.add("weather", unfilteredWeatherDataObject.get("weather").getAsJsonArray());
+
+
+
+            filteredWeatherDataList.add(filteredWeatherDataItem);
+        }
+        JsonObject filteredJsonObject = new JsonObject();
+
+        filteredJsonObject.add("weather", filteredWeatherDataList);
+
+        return filteredJsonObject;
+
+    }
+
+    private JsonObject fetchWeatherData(double latitude, double longitude) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude +"&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
 
@@ -26,37 +61,12 @@ public class WeatherService {
                 .get()
                 .build();
 
-        Gson gson = new Gson();
         ResponseBody responseBody = client.newCall(request).execute().body();
-        String responseBodyString = responseBody.string();
+        String responseBodyString = null != responseBody ? responseBody.string() : "{}";
+        System.out.println(responseBodyString);
 
-        JsonElement oldJsonElement = new Gson().fromJson(responseBodyString, JsonElement.class);
-        JsonObject oldJsonObject = oldJsonElement.getAsJsonObject();
-        JsonObject newJsonObject = new JsonObject();
-
-        JsonArray oldWeatherData = oldJsonObject.get("list").getAsJsonArray();
-        JsonArray newWeatherData = new JsonArray();
-
-        for (JsonElement oldWeather: oldWeatherData) {
-            JsonObject oldWeatherObject = oldWeather.getAsJsonObject();
-
-            JsonObject newWeather = new JsonObject();
-
-            String unixTimestamp = oldWeatherObject.get("dt").getAsString();
-            String date = formatDate(unixTimestamp);
-            newWeather.add("date",new JsonPrimitive(date));
-            newWeather.add("temp", oldWeatherObject.get("main").getAsJsonObject().get("temp"));
-            newWeather.add("chance_of_rain", oldWeatherObject.get("pop"));
-            newWeather.add("weather", oldWeatherObject.get("weather").getAsJsonArray());
-
-
-
-            newWeatherData.add(newWeather);
-        }
-
-        newJsonObject.add("weather", newWeatherData);
-
-        return newJsonObject.toString();
+        JsonElement unfilteredJsonElement = new Gson().fromJson(responseBodyString, JsonElement.class);
+        return unfilteredJsonElement.getAsJsonObject();
     }
 
     private String formatDate(String unixString){

@@ -1,9 +1,6 @@
 package com.getyourway.api.controllers;
 
 import com.getyourway.api.services.WeatherService;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +18,7 @@ public class WeatherController {
     @GetMapping("/weather")
     public String weather(@RequestParam double latitude, @RequestParam double longitude) {
         try {
-            return service.makeRequest(latitude, longitude);
+            return service.getFiveDayForecast(latitude, longitude);
         } catch (IOException e){
             e.printStackTrace();
             return null;
