@@ -31,18 +31,26 @@ public class WeatherService {
         for (JsonElement unfilteredWeatherDataElement: unfilteredWeatherDataList) {
             JsonObject unfilteredWeatherDataObject = unfilteredWeatherDataElement.getAsJsonObject();
 
-            JsonObject filteredWeatherDataItem = new JsonObject();
+            String dateTimeString = unfilteredWeatherDataObject.get("dt_txt").getAsString();
+            String timeString = dateTimeString.split(" ")[1];
 
-            String unixTimestamp = unfilteredWeatherDataObject.get("dt").getAsString();
-            String date = formatDate(unixTimestamp);
-            filteredWeatherDataItem.add("date",new JsonPrimitive(date));
-            filteredWeatherDataItem.add("temp", unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp"));
-            filteredWeatherDataItem.add("chance_of_rain", unfilteredWeatherDataObject.get("pop"));
-            filteredWeatherDataItem.add("weather", unfilteredWeatherDataObject.get("weather").getAsJsonArray());
+            if (timeString.equals("12:00:00")){
+
+                JsonObject filteredWeatherDataItem = new JsonObject();
+
+                String unixTimestamp = unfilteredWeatherDataObject.get("dt").getAsString();
+                String date = formatDate(unixTimestamp);
+                filteredWeatherDataItem.add("date",new JsonPrimitive(date));
+                filteredWeatherDataItem.add("temp", unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp"));
+                filteredWeatherDataItem.add("chance_of_rain", unfilteredWeatherDataObject.get("pop"));
+                filteredWeatherDataItem.add("weather", unfilteredWeatherDataObject.get("weather").getAsJsonArray());
 
 
 
-            filteredWeatherDataList.add(filteredWeatherDataItem);
+                filteredWeatherDataList.add(filteredWeatherDataItem);
+
+            }
+
         }
         JsonObject filteredJsonObject = new JsonObject();
 
