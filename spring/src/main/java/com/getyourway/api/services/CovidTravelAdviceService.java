@@ -5,6 +5,8 @@ import okhttp3.*;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class CovidTravelAdviceService {
@@ -19,7 +21,7 @@ public class CovidTravelAdviceService {
         return filteredJsonObject.toString();
     }
 
-    public JsonObject fetchCovidRiskLevel(String countryCode) throws IOException {
+    private JsonObject fetchCovidRiskLevel(String countryCode) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -34,23 +36,30 @@ public class CovidTravelAdviceService {
         return unfilteredJsonElement.getAsJsonObject();
     }
 
-    public JsonObject filterExternalJsonObject(JsonObject unfilteredJsonObject, String countryCode) {
-        JsonObject unfilteredCovidDataObject = unfilteredJsonObject
-                .get("data").getAsJsonObject();
-        // .get(countryCode).getAsJsonObject()
-        // .get("advisory").getAsJsonObject();
+    private JsonObject filterExternalJsonObject(JsonObject unfilteredJsonObject, String countryCode) {
 
-        // JsonObject filteredCovidDataObject = new JsonObject();
-        //
-        // filteredCovidDataObject.add("risk_level", unfilteredCovidDataObject.get("score"));
-        // filteredCovidDataObject.add("updated_time", unfilteredCovidDataObject.get("updated"));
-        //
-        // return filteredCovidDataObject;
-        return unfilteredJsonObject;
+        // For some reason "FR" works, but not when countryCode variable is passed
+        JsonObject unfilteredCovidObject = unfilteredJsonObject
+                .getAsJsonObject("data")
+                .getAsJsonObject("FR")
+                .getAsJsonObject("advisory");
+
+        JsonObject filteredCovidDataObject = new JsonObject();
+
+        String score = String.format("%.1f", unfilteredCovidObject.get("score").getAsFloat());
+        filteredCovidDataObject.add("risk_level", new JsonPrimitive(score));
+
+        String formattedDate = formatDate(unfilteredCovidObject.get("updated").getAsString());
+        filteredCovidDataObject.add("updated_time", new JsonPrimitive(formattedDate));
+
+        JsonObject filteredJSONObject = new JsonObject();
+        filteredJSONObject.add("risk", filteredCovidDataObject);
+
+        return filteredJSONObject;
     }
 
 
-    public String convertCoordinates(double latitude, double longitude) throws IOException {
+    private String convertCoordinates(double latitude, double longitude) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -63,5 +72,11 @@ public class CovidTravelAdviceService {
         String responseBodyString = responseBody.string();
 
         return responseBodyString;
+    }
+
+    private String formatDate(String dateString) {
+        LocalDateTime startDate = LocalDateTime.parse(dateString,
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return startDate.format(DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss"));
     }
 }
