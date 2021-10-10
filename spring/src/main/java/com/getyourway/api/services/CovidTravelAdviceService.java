@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static java.awt.SystemColor.text;
+
 @Service
 public class CovidTravelAdviceService {
 
@@ -37,11 +39,9 @@ public class CovidTravelAdviceService {
     }
 
     private JsonObject filterExternalJsonObject(JsonObject unfilteredJsonObject, String countryCode) {
-
-        // For some reason "FR" works, but not when countryCode variable is passed
         JsonObject unfilteredCovidObject = unfilteredJsonObject
                 .getAsJsonObject("data")
-                .getAsJsonObject("FR")
+                .getAsJsonObject(countryCode)
                 .getAsJsonObject("advisory");
 
         JsonObject filteredCovidDataObject = new JsonObject();
@@ -68,10 +68,10 @@ public class CovidTravelAdviceService {
                 .build();
 
         ResponseBody responseBody = client.newCall(request).execute().body();
-        // String responseBodyString = null != responseBody ? responseBody.string() : "{}";
-        String responseBodyString = responseBody.string();
+        String responseBodyString = null != responseBody ? responseBody.string() : "{}";
+        String formattedString = responseBodyString.replace("\n", "").replace("\r", "");
 
-        return responseBodyString;
+        return formattedString;
     }
 
     private String formatDate(String dateString) {
