@@ -1,0 +1,4 @@
+.WeatherBar {
+  display: flex;
+  flex-direction: row;
+}
