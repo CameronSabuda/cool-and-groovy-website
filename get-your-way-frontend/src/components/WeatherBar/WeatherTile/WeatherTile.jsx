@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import "./WeatherTile.css";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const WeatherTile = ({ data }) => {
@@ -9,7 +9,7 @@ const WeatherTile = ({ data }) => {
     <div>
       <Card>
         <Card.Header>{data.day}</Card.Header>
-        <Card.Body>
+        <Card.Body className="bg-info">
           <Container>
             <Row>
               <img
@@ -36,6 +36,7 @@ const WeatherTile = ({ data }) => {
           </Container>
         </Card.Body>
       </Card>
+      <Button variant="warning">test</Button>
     </div>
   );
 };
