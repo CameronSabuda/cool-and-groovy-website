@@ -42,13 +42,18 @@ public class WeatherService {
                 String date = formatDate(unixTimestamp);
                 filteredWeatherDataItem.add("date",new JsonPrimitive(date));
                 filteredWeatherDataItem.add("temp", unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp"));
-                filteredWeatherDataItem.add("chance_of_rain", unfilteredWeatherDataObject.get("pop"));
-                filteredWeatherDataItem.add("weather", unfilteredWeatherDataObject.get("weather").getAsJsonArray());
 
+                Double chance_of_rain = unfilteredWeatherDataObject.get("pop").getAsDouble() * 100;
+                filteredWeatherDataItem.add("chance_of_rain", new JsonPrimitive(chance_of_rain));
 
+                JsonObject weatherDescriptionObject = unfilteredWeatherDataObject
+                        .get("weather").getAsJsonArray()
+                        .get(0).getAsJsonObject();
+
+                filteredWeatherDataItem.add("weather_type", weatherDescriptionObject.get("description"));
+                filteredWeatherDataItem.add("icon",weatherDescriptionObject.get("icon"));
 
                 filteredWeatherDataList.add(filteredWeatherDataItem);
-
             }
 
         }
