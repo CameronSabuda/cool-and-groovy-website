@@ -4,6 +4,11 @@ pipeline {
         CI = true
     }
     stages {
+        stage('change directory into frontend') {
+            steps {
+                sh 'cd get-your-way-frontend'
+            }
+        }
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
