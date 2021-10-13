@@ -3,35 +3,38 @@ pipeline {
     environment {
         CI = true
     }
-        stages {
-            stage('Install dependencies') {
-                steps {
-                    dir('get-your-way-frontend') {
-                        sh 'npm install'
-                    }
-                }
-            }
-            stage('Audit fix') {
-                steps {
-                    dir('get-your-way-frontend') {
-                        sh 'npm audit fix'
-                    }
-                }
-            }
-            stage('Build application') {
-                steps {
-                    dir('get-your-way-frontend') {
-                        sh 'npm run build'
-                    }
-                }
-            }
-            stage('Serving') {
-                steps {
-                    dir('get-your-way-frontend') {
-                        sh 'serve -s build'
-                    }
-                }
-            }
 
+    tools {nodejs "nodejs"}
+
+    stages {
+        stage('Install dependencies') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh 'npm install'
+                }
+            }
         }
+        stage('Audit fix') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh 'npm audit fix'
+                }
+            }
+        }
+        stage('Build application') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh 'npm run build'
+                }
+            }
+        }
+        stage('Serving') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh 'serve -s build'
+                }
+            }
+        }
+
+    }
 }
