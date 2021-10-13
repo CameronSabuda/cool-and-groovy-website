@@ -11,7 +11,7 @@
     <groupId>com.getyourway</groupId>
     <artifactId>get-your-way-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>get-your-way-api</name>
     <description>get-your-way-api</description>
     <properties>
