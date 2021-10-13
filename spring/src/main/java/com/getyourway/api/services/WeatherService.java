@@ -38,18 +38,23 @@ public class WeatherService {
             if (timeString.equals("12:00:00")) {
                 JsonObject filteredWeatherDataItem = new JsonObject();
 
-                String date = convertDateTimeToDay(dateTimeString);
-                filteredWeatherDataItem.add("date", new JsonPrimitive(date));
-                filteredWeatherDataItem.add("temp", unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp"));
+                String day = convertDateTimeToDay(dateTimeString);
+                filteredWeatherDataItem.add("day", new JsonPrimitive(day));
+                float temperature = unfilteredWeatherDataObject.get("main").getAsJsonObject().get("temp").getAsFloat();
+                int intTemperature = Math.round(temperature);
+                filteredWeatherDataItem.add("temp", new JsonPrimitive(intTemperature));
 
-                Double chanceOfRain = unfilteredWeatherDataObject.get("pop").getAsDouble() * 100;
+                int chanceOfRain = Math.round(unfilteredWeatherDataObject.get("pop").getAsFloat() * 100);
+
                 filteredWeatherDataItem.add("chance_of_rain", new JsonPrimitive(chanceOfRain));
 
                 JsonObject weatherDescriptionObject = unfilteredWeatherDataObject
                         .get("weather").getAsJsonArray()
                         .get(0).getAsJsonObject();
 
-                filteredWeatherDataItem.add("weather_type", weatherDescriptionObject.get("description"));
+                String weatherType = weatherDescriptionObject.get("description").getAsString();
+
+                filteredWeatherDataItem.add("weather_type", new JsonPrimitive(StringUtils.capitalize(weatherType)));
                 filteredWeatherDataItem.add("icon", weatherDescriptionObject.get("icon"));
 
                 filteredWeatherDataList.add(filteredWeatherDataItem);
