@@ -11,21 +11,22 @@ pipeline {
                 }
             }
             stage('Install dependencies') {
-                    steps {
-                        dir('get-your-way-frontend') {
-                            sh 'ls'
-                            sh 'pwd'
-                            sh 'npm install'
-                            sh 'npm audit fix'
-                            sh 'npm run build'
-                        }
+                steps {
+                    dir('get-your-way-frontend') {
+                        sh 'ls'
+                        sh 'pwd'
+                        sh 'npm install'
+                        sh 'npm audit fix'
+                        sh 'npm run build'
                     }
-                stage('Serving') {
-                    steps {
-                        dir('get-your-way-frontend') {
-                            sh 'npm install -g serve'
-                            sh 'serve -s build'
-                        }
+                }
+
+            }
+            stage('Serving') {
+                steps {
+                    dir('get-your-way-frontend') {
+                        sh 'npm install -g serve'
+                        sh 'serve -s build'
                     }
                 }
             }
