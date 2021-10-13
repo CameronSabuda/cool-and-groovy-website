@@ -11,13 +11,14 @@ pipeline {
                 }
             }
             stage('Install dependencies') {
-                dir("get-your-way-frontend") {
                     steps {
+                        sh 'ls'
+                        sh 'pwd'
                         sh 'npm install'
                         sh 'npm run build'
                         sh 'npm start'
                     }
-                }
             }
+
         }
 }
