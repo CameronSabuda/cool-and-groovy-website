@@ -7,21 +7,16 @@ pipeline {
             stage('WhereamI') {
                 steps {
                     sh 'pwd'
+                    sh 'ls'
                 }
             }
             stage('Install dependencies') {
-                steps {
-                    sh 'npm install'
-                }
-            }
-            stage('Build') {
-                steps {
-                    sh 'npm run build'
-                }
-            }
-            stage('Start application') {
-                steps {
-                    sh 'npm start'
+                dir("get-your-way-frontend") {
+                    steps {
+                        sh 'npm install'
+                        sh 'npm run build'
+                        sh 'npm start'
+                    }
                 }
             }
         }
