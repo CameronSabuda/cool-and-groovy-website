@@ -17,6 +17,7 @@ pipeline {
                         sh 'npm audit fix'
                     }
                 }
+            }
             stage('Build application') {
                 steps {
                     dir('get-your-way-frontend') {
