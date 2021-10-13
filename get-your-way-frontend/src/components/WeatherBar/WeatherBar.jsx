@@ -4,9 +4,9 @@ import WeatherTile from "./WeatherTile/WeatherTile";
 import axios from 'axios'
 
 
-// use this command Json-server -p 4000 --watch ./src/FakeData.json
+// use this command Json-server -p 9090 --watch ./src/FakeData.json
 const client = axios.create({
-  baseURL: "http://localhost:4000/weather"
+  baseURL: "http://localhost:9090/weather"
 })
 
 const WeatherBar = () => {
@@ -28,15 +28,6 @@ const WeatherBar = () => {
       })}
     </div>
   )
-
-
-  // return (
-  //   <div className="WeatherBar">
-  //     {weatherData.weather.map((weather) => {
-  //       return <WeatherTile data={weather} />;
-  //     })}
-  //   </div>
-  // );
 };
 
 export default WeatherBar;

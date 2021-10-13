@@ -4,23 +4,25 @@ pipeline {
         CI = true
     }
         stages {
-            stage('WhereamI') {
-                steps {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
             stage('Install dependencies') {
                 steps {
                     dir('get-your-way-frontend') {
-                        sh 'ls'
-                        sh 'pwd'
                         sh 'npm install'
+                    }
+                }
+            }
+            stage('Audit fix') {
+                steps {
+                    dir('get-your-way-frontend') {
                         sh 'npm audit fix'
+                    }
+                }
+            stage('Build application') {
+                steps {
+                    dir('get-your-way-frontend') {
                         sh 'npm run build'
                     }
                 }
-
             }
             stage('Serving') {
                 steps {
