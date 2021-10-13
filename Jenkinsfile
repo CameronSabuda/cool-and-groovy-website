@@ -7,6 +7,7 @@ pipeline {
         stage('change directory into frontend') {
             steps {
                 sh 'cd get-your-way-frontend'
+                sh 'ls'
             }
         }
         stage('Install dependencies') {
