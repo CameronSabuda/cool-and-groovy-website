@@ -3,10 +3,12 @@ pipeline {
     environment {
         CI = true
     }
-
-    tools {nodejs "nodejs"}
-
     stages {
+        stage('export path for npm') {
+            steps {
+                sh 'export PATH="$(npm bin -g):$PATH"'
+            }
+        }
         stage('Install dependencies') {
             steps {
                 dir('get-your-way-frontend') {

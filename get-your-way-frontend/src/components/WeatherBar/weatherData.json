@@ -2,47 +2,37 @@
   "weather": [
     {
       "day": "Monday",
-      "date": "12-10-2021 12:00:00",
-      "temp": 12.92,
+      "temp": 12,
       "chance_of_rain": 99,
-      "main": "Clouds",
-      "description": "scattered clouds",
+      "weather_type": "scattered clouds",
       "icon": "03d"
     },
     {
       "day": "Tuesday",
-      "date": "13-10-2021 12:00:00",
-      "temp": 14.48,
+      "temp": 14,
       "chance_of_rain": 11,
-      "main": "Clouds",
-      "description": "overcast clouds",
+      "weather_type": "overcast clouds",
       "icon": "04d"
     },
     {
       "day": "Wednesday",
-      "date": "14-10-2021 12:00:00",
-      "temp": 17.09,
+      "temp": 17,
       "chance_of_rain": 20,
-      "main": "Clouds",
-      "description": "scattered clouds",
+      "weather_type": "scattered clouds",
       "icon": "03d"
     },
     {
       "day": "Thursday",
-      "date": "15-10-2021 12:00:00",
-      "temp": 13.95,
+      "temp": 13,
       "chance_of_rain": 23,
-      "main": "Clouds",
-      "description": "broken clouds",
+      "weather_type": "broken clouds",
       "icon": "04d"
     },
     {
       "day": "Friday",
-      "date": "16-10-2021 12:00:00",
-      "temp": 12.83,
+      "temp": 12,
       "chance_of_rain": 53,
-      "main": "Clouds",
-      "description": "overcast clouds",
+      "weather_type": "overcast clouds",
       "icon": "04d"
     }
   ]
