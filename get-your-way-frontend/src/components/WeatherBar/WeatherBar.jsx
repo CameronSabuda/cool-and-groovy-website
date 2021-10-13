@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./WeatherBar.css";
 import WeatherTile from "./WeatherTile/WeatherTile";
-import weatherData from "./weatherData.json";
 import axios from 'axios'
 
 
