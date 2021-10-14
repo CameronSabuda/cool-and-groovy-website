@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    environment {
+        CI = true
+    }
+    stages {
+        stage('Build') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh """
+                    npm install
+                    npm audit fix
+                    npm run build
+                    """
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                dir ('get-your-way-frontend') {
+                    sh """
+                    sudo rm -rf /var/www/jenkins-react-app
+                    sudo cp -r ${WORKSPACE}/get-your-way-frontend/build/ /var/www/jenkins-react-app/
+                    """
+                }
+            }
+        }
+    }
+}

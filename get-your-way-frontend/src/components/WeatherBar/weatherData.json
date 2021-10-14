@@ -1,0 +1,39 @@
+{
+  "weather": [
+    {
+      "day": "Monday",
+      "temp": 12,
+      "chance_of_rain": 99,
+      "weather_type": "scattered clouds",
+      "icon": "03d"
+    },
+    {
+      "day": "Tuesday",
+      "temp": 14,
+      "chance_of_rain": 11,
+      "weather_type": "overcast clouds",
+      "icon": "04d"
+    },
+    {
+      "day": "Wednesday",
+      "temp": 17,
+      "chance_of_rain": 20,
+      "weather_type": "scattered clouds",
+      "icon": "03d"
+    },
+    {
+      "day": "Thursday",
+      "temp": 13,
+      "chance_of_rain": 23,
+      "weather_type": "broken clouds",
+      "icon": "04d"
+    },
+    {
+      "day": "Friday",
+      "temp": 12,
+      "chance_of_rain": 53,
+      "weather_type": "overcast clouds",
+      "icon": "04d"
+    }
+  ]
+}
