@@ -1,0 +1,10 @@
+
+.tag{
+    position: absolute;
+    top: 30%;
+    right: 1%;
+    display: block;
+    color: white;
+    padding: 0 0.5rem;
+    background: orange;
+}
