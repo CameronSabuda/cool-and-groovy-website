@@ -4,42 +4,25 @@ pipeline {
         CI = true
     }
     stages {
-        // stage('export path for npm') {
-        //     steps {
-        //         sh 'export PATH="$(npm bin -g):$PATH"'
-        //     }
-        // }
-        stage('Install dependencies') {
-            steps {
-                dir('get-your-way-frontend') {
-                    sh 'npm install'
-                }
-            }
-        }
-        stage('Audit fix') {
-            steps {
-                dir('get-your-way-frontend') {
-                    sh 'npm audit fix'
-                }
-            }
-        }
-        stage('Build application') {
-            steps {
-                dir('get-your-way-frontend') {
-                    sh 'npm run build'
-                }
-            }
-        }
-        stage('Serving') {
+        stage('Build') {
             steps {
                 dir('get-your-way-frontend') {
                     sh """
-                    npm install -g serve
-                    serve -s build
+                    npm install
+                    npm audit fix
+                    npm run build"""
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                dir('get-your-way-frontend') {
+                    sh """
+                    sudo rm -rf /var/www/jenkins-react-app
+                    sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
                     """
                 }
             }
         }
-
     }
 }
