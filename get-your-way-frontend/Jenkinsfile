@@ -4,11 +4,11 @@ pipeline {
         CI = true
     }
     stages {
-        stage('export path for npm') {
-            steps {
-                sh 'export PATH="$(npm bin -g):$PATH"'
-            }
-        }
+        // stage('export path for npm') {
+        //     steps {
+        //         sh 'export PATH="$(npm bin -g):$PATH"'
+        //     }
+        // }
         stage('Install dependencies') {
             steps {
                 dir('get-your-way-frontend') {
@@ -33,7 +33,10 @@ pipeline {
         stage('Serving') {
             steps {
                 dir('get-your-way-frontend') {
-                    sh 'serve -s build'
+                    sh """
+                    npm install
+                    serve -s build
+                    """
                 }
             }
         }
