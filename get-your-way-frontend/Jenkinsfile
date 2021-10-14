@@ -11,6 +11,8 @@ pipeline {
                     npm install
                     npm audit fix
                     npm run build
+                    pwd
+                    ls
                     """
                 }
             }
@@ -19,6 +21,8 @@ pipeline {
             steps {
                 dir ('get-your-way-frontend') {
                     sh """
+                    pwd
+                    ls
                     sudo rm -rf /var/www/jenkins-react-app
                     sudo cp -r ${WORKSPACE}/get-your-way-front-end/build /var/www/jenkins-react-app/
                     """
