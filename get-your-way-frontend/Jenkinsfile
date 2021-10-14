@@ -34,7 +34,7 @@ pipeline {
             steps {
                 dir('get-your-way-frontend') {
                     sh """
-                    npm install serve
+                    npm install -g serve
                     serve -s build
                     """
                 }
