@@ -12,17 +12,22 @@ pipeline {
                     npm audit fix
                     npm run build
                     ls
+                    pwd
                     """
                 }
             }
         }
         stage('Deploy') {
             steps {
-                sh """
-                npm --prefix ${WORKSPACE}/get-your-way-front-end run build
-                sudo rm -rf /var/www/jenkins-react-app
-                sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
-                """
+                dir ('get-your-way-frontend') {
+                    sh """
+                    ls
+                    pwd
+                    npm run build
+                    sudo rm -rf /var/www/jenkins-react-app
+                    sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
+                    """
+                }
             }
         }
     }
