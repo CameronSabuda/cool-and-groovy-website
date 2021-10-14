@@ -11,6 +11,7 @@ pipeline {
                     npm install
                     npm audit fix
                     npm run build
+                    ls
                     """
                 }
             }
@@ -18,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh """
-                npm --prefix get-your-way-front-end run build
+                npm --prefix ${WORKSPACE}/get-your-way-front-end run build
                 sudo rm -rf /var/www/jenkins-react-app
                 sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
                 """
