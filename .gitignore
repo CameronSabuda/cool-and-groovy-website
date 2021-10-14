@@ -1,7 +1,6 @@
+### MacOS ###
 .DS_Store
+**/.DS_Store
 
-### IntelliJ IDEA ###
+### intellij ###
 .idea
-*.iws
-*.iml
-*.ipr
