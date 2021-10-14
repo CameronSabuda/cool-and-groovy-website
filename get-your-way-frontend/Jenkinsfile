@@ -16,12 +16,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                dir('get-your-way-frontend') {
-                    sh """
-                    sudo rm -rf /var/www/jenkins-react-app
-                    sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
-                    """
-                }
+                sh """
+                sudo rm -rf /var/www/jenkins-react-app
+                sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
+                """
             }
         }
     }
