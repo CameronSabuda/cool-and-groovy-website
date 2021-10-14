@@ -4,26 +4,26 @@ import WeatherTile from "./WeatherTile/WeatherTile";
 import axios from 'axios'
 
 
-// use this command Json-server -p 9090 --watch ./src/FakeData.json
 const client = axios.create({
-  baseURL: "http://localhost:9090/weather"
+  baseURL: "http://localhost:9090/weather?latitude=51.5074&longitude=-0.1278"
 })
 
 const WeatherBar = () => {
-  const [weatherData, setWeatherData] = useState([])
+  const [weatherData, setWeatherData] = useState()
 
   useEffect(() => {
     const getWeather = async () => {
       let response = await client.get()
-      setWeatherData(response.data)
+      let { weather } = response.data
+      setWeatherData(weather)
     }
     getWeather()
   }, [])
 
   return(
     <div className="WeatherBar">
-      {weatherData.map((weather, i) => {
-        console.log(weather);
+      {console.log(weatherData)}
+      {weatherData && weatherData.map((weather, i) => {
         return <WeatherTile key={i} data={weather}/>
       })}
     </div>
