@@ -10,13 +10,15 @@ pipeline {
                     sh """
                     npm install
                     npm audit fix
-                    npm run build"""
+                    npm run build
+                    """
                 }
             }
         }
         stage('Deploy') {
             steps {
                 sh """
+                npm run build
                 sudo rm -rf /var/www/jenkins-react-app
                 sudo cp -r ${WORKSPACE}/get-your-way-front-end/build/ /var/www/jenkins-react-app/
                 """
