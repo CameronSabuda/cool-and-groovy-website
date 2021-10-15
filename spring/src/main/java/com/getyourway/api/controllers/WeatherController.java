@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@CrossOrigin(origins = {"http://99.81.186.138:9090", "http://127.0.0.1:9090"})
+@CrossOrigin(origins = {"http://99.81.186.138", "http://127.0.0.1"})
 public class WeatherController {
     private WeatherService service;
 
