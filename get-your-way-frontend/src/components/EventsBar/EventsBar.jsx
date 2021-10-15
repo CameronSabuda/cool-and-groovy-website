@@ -5,7 +5,7 @@ import { CardGroup } from "react-bootstrap";
 
 
 const client = axios.create({
-    baseURL: "http://localhost:4000/events"
+    baseURL: "http://99.81.186.138:9090/events?latitude=51.5074&longitude=-0.1278"
 })
 
 const EventsBar = () => {
@@ -14,7 +14,8 @@ const EventsBar = () => {
     useEffect(() => {
         const getEvents =  async () => {
             let response = await client.get()
-            setEvents(response.data)
+            let {responseData} = response.data
+            setEvents(responseData)
         }
         getEvents()
     }, [])
