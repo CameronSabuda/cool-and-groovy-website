@@ -22,7 +22,6 @@ const WeatherBar = () => {
 
   return(
     <div className="WeatherBar">
-      {console.log(weatherData)}
       {weatherData && weatherData.map((weather, i) => {
         return <WeatherTile key={i} data={weather}/>
       })}
