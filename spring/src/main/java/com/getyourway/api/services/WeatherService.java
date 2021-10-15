@@ -80,7 +80,6 @@ public class WeatherService {
 
         ResponseBody responseBody = client.newCall(request).execute().body();
         String responseBodyString = null != responseBody ? responseBody.string() : "{}";
-        System.out.println(responseBodyString);
 
         JsonElement unfilteredJsonElement = new Gson().fromJson(responseBodyString, JsonElement.class);
         return unfilteredJsonElement.getAsJsonObject();
