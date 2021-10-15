@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { Row, Col, Container, Button, Figure} from "react-bootstrap";
+import { Row, Col, Container, Button} from "react-bootstrap";
 import PropTypes from "prop-types";
 import './EventsTile.css'
 
@@ -19,7 +19,7 @@ const EventsTile = ({
         <Card className="bg-primary my-5 mx-2 shadow-lg " style={{ width: '18rem'}}>
         <span className="tag">{labels[0]}</span>
         <Card.Img className="pt-3 w-50 vh-50 mx-auto" src="https://www.svgrepo.com/show/268564/rock-and-roll-concert.svg" />
-      
+
         <Card.Body className=" pt-1" >
             <Card.Title className="text-white mb-2">{title}</Card.Title>
             <Card.Text className="text-white">{date}</Card.Text>
@@ -48,7 +48,14 @@ const EventsTile = ({
       </div>
     </div>
   );
-  
 };
+
+EventsTile.propTypes = {
+  labels: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  start_date: PropTypes.string,
+  end_date: PropTypes.string,
+  distance_from_location: PropTypes.string
+}
 
 export default EventsTile;

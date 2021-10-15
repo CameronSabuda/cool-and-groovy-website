@@ -47,7 +47,6 @@ WeatherTile.propTypes = {
     day: PropTypes.string.isRequired,
     temp: PropTypes.number,
     chance_of_rain: PropTypes.number,
-    main: PropTypes.string,
     description: PropTypes.string,
     icon: PropTypes.string,
   }),
