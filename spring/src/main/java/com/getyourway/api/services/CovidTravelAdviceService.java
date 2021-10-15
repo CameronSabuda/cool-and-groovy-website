@@ -7,14 +7,13 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import static java.awt.SystemColor.text;
+import java.util.Locale;
 
 @Service
 public class CovidTravelAdviceService {
 
     public String getCovidRiskLevel(double latitude, double longitude) throws IOException {
-        String countryCode = convertCoordinates(latitude, longitude);
+        String countryCode = convertCoordinatesToCountryCode(latitude, longitude);
 
         JsonObject unfilteredJsonObject = fetchCovidRiskLevel(countryCode);
 
@@ -46,20 +45,16 @@ public class CovidTravelAdviceService {
 
         JsonObject filteredCovidDataObject = new JsonObject();
 
+        String countryName =  new Locale("", countryCode).getDisplayCountry();
+        filteredCovidDataObject.add("country_name", new JsonPrimitive(countryName));
+
         String score = String.format("%.1f", unfilteredCovidObject.get("score").getAsFloat());
         filteredCovidDataObject.add("risk_level", new JsonPrimitive(score));
 
-        String formattedDate = formatDate(unfilteredCovidObject.get("updated").getAsString());
-        filteredCovidDataObject.add("updated_time", new JsonPrimitive(formattedDate));
-
-        JsonObject filteredJSONObject = new JsonObject();
-        filteredJSONObject.add("risk", filteredCovidDataObject);
-
-        return filteredJSONObject;
+        return filteredCovidDataObject;
     }
 
-
-    private String convertCoordinates(double latitude, double longitude) throws IOException {
+    private String convertCoordinatesToCountryCode(double latitude, double longitude) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -69,9 +64,8 @@ public class CovidTravelAdviceService {
 
         ResponseBody responseBody = client.newCall(request).execute().body();
         String responseBodyString = null != responseBody ? responseBody.string() : "{}";
-        String formattedString = responseBodyString.replace("\n", "").replace("\r", "");
 
-        return formattedString;
+        return responseBodyString.replace("\n", "").replace("\r", "");
     }
 
     private String formatDate(String dateString) {
