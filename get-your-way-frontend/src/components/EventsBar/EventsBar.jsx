@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EventsTile from './EventsTile/EventsTile';
 import axios from 'axios';
+import { CardGroup } from "react-bootstrap";
 
 
 const client = axios.create({
@@ -20,10 +21,12 @@ const EventsBar = () => {
 
 
     return (
-        <div className= 'EventsBar d-flex bg-secondary'>
-            {events && events.map((event, i) => {
-                return <EventsTile data={event} key={i}/>
-            })}
+        <div className= 'EventsBar bg-secondary'>
+            <CardGroup className='d-flex flex-row'>
+                {events && events.map((event, i) => {
+                    return <EventsTile data={event} key={i}/>
+                })}
+            </CardGroup>
         </div>
     )
 }
