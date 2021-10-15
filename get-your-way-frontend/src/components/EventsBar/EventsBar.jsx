@@ -1,15 +1,29 @@
+import React, { useEffect, useState } from "react";
 import EventsTile from './EventsTile/EventsTile';
-import React from 'react';
+import axios from 'axios';
 
 
+const client = axios.create({
+    baseURL: "http://localhost:4000/events"
+})
 
 const EventsBar = () => {
+    const [events, setEvents] = useState(null)
+
+    useEffect(() => {
+        const getEvents =  async () => {
+            let response = await client.get()
+            setEvents(response.data)
+        }
+        getEvents()
+    }, [])
+
+
     return (
         <div className= 'EventsBar d-flex bg-secondary'>
-            {[...Array(5)].map(event => {
-                return <EventsTile />
+            {events && events.map((event, i) => {
+                return <EventsTile data={event} key={i}/>
             })}
-            
         </div>
     )
 }
