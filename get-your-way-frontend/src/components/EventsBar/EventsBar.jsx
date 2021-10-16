@@ -6,7 +6,7 @@ import EventsLoader from './Loader'
 import './EventsBar.css'
 
 const client = axios.create({
-	baseURL: 'http://99.81.186.138:9090/events?latitude=51.5074&longitude=-0.1278',
+	baseURL: 'http://localhost:9090/events?latitude=51.5074&longitude=-0.1278',
 })
 
 const EventsBar = () => {
@@ -26,9 +26,9 @@ const EventsBar = () => {
 
 	return (
 		<div className='EventsBar bg-secondary vw-100'>
-			{isLoading && <EventsLoader />}
 			<Container fluid>
 				<Row className='d-flex flex-row scrolling'>
+					{isLoading && <EventsLoader />}
 					{!isLoading &&
 						eventsData.map((event, i) => {
 							return <EventsTile data={event} key={i} />

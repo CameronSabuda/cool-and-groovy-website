@@ -50,11 +50,14 @@ const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from
 }
 
 EventsTile.propTypes = {
-	labels: PropTypes.string,
-	title: PropTypes.string.isRequired,
-	start_date: PropTypes.string,
-	end_date: PropTypes.string,
-	distance_from_location: PropTypes.string,
+	data: PropTypes.shape({
+		labels: PropTypes.array,
+		title: PropTypes.string.isRequired,
+		start_date: PropTypes.string,
+		end_date: PropTypes.string,
+		distance_from_location: PropTypes.string,
+		category: PropTypes.string,
+	}),
 }
 
 export default EventsTile
