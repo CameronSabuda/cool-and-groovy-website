@@ -24,10 +24,10 @@ const EventsBar = () => {
 	}, [])
 
 	return (
-		<div className='EventsBar bg-secondary'>
+		<div className='EventsBar bg-secondary vw-100'>
 			{isLoading && <EventsLoader />}
 			<Container fluid>
-				<Row className='d-flex flex-row flex-nowrap'>
+				<Row className='d-flex flex-row flex-nowrap scrolling'>
 					{!isLoading &&
 						eventsData.map((event, i) => {
 							return <EventsTile data={event} key={i} />
