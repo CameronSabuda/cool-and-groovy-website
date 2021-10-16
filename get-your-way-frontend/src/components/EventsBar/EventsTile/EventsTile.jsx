@@ -4,17 +4,20 @@ import { Row, Col, Container, Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import './EventsTile.css'
 
+const handleError = (e) => {
+	e.target.src = 'images/fire.png'
+}
+
 const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from_location, category } }) => {
 	let [date, startTime] = start_date.split(' ')
 	let endTime = end_date.split(' ')[1]
 
 	return (
-		<Card className='bg-primary my-5 mx-2 shadow-lg ' style={{ minWidth: '18rem' }}>
+		<Card className='bg-primary my-5 mx-2 shadow-lg text-center' style={{ minWidth: '20rem' }}>
 			<span className='tag'>{labels[0]}</span>
-			<Card.Img className='pt-3 w-50 vh-50 mx-auto' src={`./src/Assets/${category}.png`} />
-
+			{<Card.Img variant="top" className='mx-auto' src={`images/${category}.png`} onError={handleError} />}
 			<Card.Body className=' pt-1'>
-				<Card.Title className='text-white mb-2'>{title}</Card.Title>
+				<Card.Title className='text-white mb-2 '>{title}</Card.Title>
 				<Card.Text className='text-white'>{date}</Card.Text>
 				<Container fluid>
 					<Row className='d-flex justify-content-between'>
