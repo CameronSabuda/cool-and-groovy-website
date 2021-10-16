@@ -6,8 +6,8 @@ const EventsLoader = props => (
     width={700}
     height={300}
     viewBox="0 0 700 300"
-    backgroundColor="#f5f5f5"
-    foregroundColor="#dbdbdb"
+    backgroundColor="#6fbbf6"
+    foregroundColor="#c19adb"
     {...props}
   >
     <rect x="4" y="8" rx="3" ry="3" width="7" height="288" />

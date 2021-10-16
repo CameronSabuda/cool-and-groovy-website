@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import WeatherTile from './WeatherTile/WeatherTile'
-import WeatherLoader from './WeatherLoader'
+import Loader from '../Loader/Loader'
 import { Container, Row } from 'react-bootstrap'
 import './WeatherBar.css'
 
@@ -27,7 +27,7 @@ const WeatherBar = () => {
 		<div className='WeatherBar bg-secondary vw-100'>
 			<Container fluid>
 				<Row className='d-flex flex-row scrolling'>
-					{isLoading && <WeatherLoader />}
+					{isLoading && <Loader />}
 					{weatherData &&
 						weatherData.map((weather, i) => {
 							return <WeatherTile key={i} data={weather} />
