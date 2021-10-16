@@ -3,7 +3,10 @@
 	"prettier.jsxSingleQuote": true,
 	"prettier.tabWidth": 4,
 	"prettier.useTabs": true,
+	"eslint.lintTask.enable": true,
+	"editor.insertSpaces": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"eslint.alwaysShowStatus": true,
-	"eslint.lintTask.enable": true
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+	"eslint.alwaysShowStatus": true
 }

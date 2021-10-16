@@ -15,7 +15,7 @@ const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from
 	return (
 		<Card className='bg-primary my-5 mx-2 shadow-lg text-center' style={{ minWidth: '20rem' }}>
 			<span className='tag'>{labels[0]}</span>
-			{<Card.Img variant='top' className='mx-auto' src={`images/${category}.png`} onError={handleError} />}
+			<Card.Img variant='top' className='mx-auto' src={`images/${category}.png`} onError={handleError} />
 			<Card.Body className='d-block pt-1'>
 				<Container className='h-50 mb-3'>
 					<Card.Title className='text-white mb-2 text-wrap'>{title}</Card.Title>
