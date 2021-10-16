@@ -7,7 +7,7 @@ import './EventsTile.css'
 
 
 const EventsTile = ({
-  data: {labels, title, start_date, end_date, distance_from_location}
+  data: {labels, title, start_date, end_date, distance_from_location, category}
 }) => {
 
   let [date, startTime] = start_date.split(' ')
@@ -18,7 +18,8 @@ const EventsTile = ({
       <div className="col">
         <Card className="bg-primary my-5 mx-2 shadow-lg " style={{ width: '18rem'}}>
         <span className="tag">{labels[0]}</span>
-        <Card.Img className="pt-3 w-50 vh-50 mx-auto" src="https://www.svgrepo.com/show/268564/rock-and-roll-concert.svg" />
+        {/* <Card.Img className="pt-3 w-50 vh-50 mx-auto" src="https://www.svgrepo.com/show/268564/rock-and-roll-concert.svg" /> */}
+        <Card.Img className="pt-3 w-50 vh-50 mx-auto" src={`./src/Assets/${category}.svg`} />
 
         <Card.Body className=" pt-1" >
             <Card.Title className="text-white mb-2">{title}</Card.Title>
