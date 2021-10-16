@@ -9,12 +9,15 @@
     background: orange;
 }
 
+.card {
+    overflow-y: auto;
+}
+
+.card-title {
+    flex-grow: 1;
+}
 .card-img-top {
     width: 100%;
     height: 20vw;
     object-fit: contain;
-}
-
-.card {
-    overflow-y: auto;
 }
