@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import EventsTile from './EventsTile/EventsTile'
 import axios from 'axios'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row} from 'react-bootstrap'
 import EventsLoader from './Loader'
 import './EventsBar.css'
 
