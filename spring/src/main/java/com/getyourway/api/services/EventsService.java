@@ -56,9 +56,8 @@ public class EventsService {
 
                 filteredEvent.add("title", unfilteredEventObject.get("title"));
                 filteredEvent.add("description", unfilteredEventObject.get("description"));
-
+                filteredEvent.add("category", unfilteredEventObject.get("category"));
                 filteredEvent.add("start_date", new JsonPrimitive(formatDate(unfilteredEventObject.get("start").getAsString())));
-
                 filteredEvent.add("end_date", new JsonPrimitive(formatDate(unfilteredEventObject.get("end").getAsString())));
 
                 JsonElement locationElement = unfilteredEventObject.get("location");

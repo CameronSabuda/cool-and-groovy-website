@@ -1,8 +1,10 @@
-import "./App.css";
+
 import React from "react";
-import WeatherBar from "./components/WeatherBar/WeatherBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
+import WeatherBar from './components/WeatherBar/WeatherBar.jsx';
+import EventsBar from './components/EventsBar/EventsBar';
+
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <NavigationBar />
       <WeatherBar />
       <Footer />
+      <EventsBar />
     </div>
   );
 }
