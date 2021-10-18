@@ -6,8 +6,8 @@ const Footer = () => {
     <div className="footer fixed-bottom">
       <Container>
         <hr />
-        <Row>
-          <Col>
+        <Row className="d-flex justify-content-center">
+          <Col className="me-2">
             <p>
               &copy;Get Your Way {new Date().getFullYear()}. All rights
               reserved.
