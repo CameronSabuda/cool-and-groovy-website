@@ -27,7 +27,7 @@ const NavigationBar = () => {
                 Movies
               </Nav.Link>
               <Nav.Link as={Link} to="/about">
-                About Us
+                About
               </Nav.Link>
               <Button variant="primary" size="md" as={Link} to="/signup">
                 Sign Up
