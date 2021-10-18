@@ -15,7 +15,11 @@ const TryItOut = () => {
 						natus?
 					</p>
 				</Row>
-				<Row></Row>
+				<Row>
+					<Image src='https://picsum.photos/600/800' rounded fluid />
+					<Image src='https://picsum.photos/600/800' rounded fluid />
+					<Image src='https://picsum.photos/600/800' rounded fluid />
+				</Row>
 			</Container>
 		</div>
 	);

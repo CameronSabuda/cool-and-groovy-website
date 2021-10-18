@@ -13,7 +13,10 @@ const Hero = () => {
 							rounded
 							fluid
 						/> */}
-						<img src='https://picsum.photos/1200/720' class="img-fluid" />
+						<img
+							src='https://picsum.photos/1200/720'
+							class='img-fluid'
+						/>
 					</Col>
 					{/* Tagline */}
 					<Col

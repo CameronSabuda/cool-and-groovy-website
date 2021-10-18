@@ -12,8 +12,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Router>
-        <LandingPage />
-      </Router>
+				<LandingPage />
+			</Router>
 		</div>
 	);
 }
