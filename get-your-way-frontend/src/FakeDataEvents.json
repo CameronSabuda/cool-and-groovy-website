@@ -1,0 +1,49 @@
+{
+    "events": [
+        {
+            "title": "Non League Div One - Northern East - Ossett United vs Pickering Town",
+            "description": "",
+            "start_date": "06-11-21 15:00:00",
+            "end_date": "06-11-21 15:00:00",
+            "location_of_event": [
+                -1.577547,
+                53.681522
+            ],
+            "distance_from_location": "0.101km",
+            "labels": [
+                "soccer",
+                "sport"
+            ]
+        },
+        {
+            "title": "Alexander O'Neal",
+            "description": "",
+            "start_date": "30-10-21 18:00:00",
+            "end_date": "30-10-21 18:00:00",
+            "location_of_event": [
+                -1.6272782,
+                53.7115572
+            ],
+            "distance_from_location": "4.649km",
+            "labels": [
+                "concert",
+                "music"
+            ]
+        },
+        {
+            "title": "Wakefield - Autumn Half Term Holidays",
+            "description": "",
+            "start_date": "23-10-21 00:00:00",
+            "end_date": "31-10-21 23:59:59",
+            "location_of_event": [
+                -1.49895,
+                53.68085
+            ],
+            "distance_from_location": "5.265km",
+            "labels": [
+                "holiday",
+                "school"
+            ]
+        }
+    ]
+}

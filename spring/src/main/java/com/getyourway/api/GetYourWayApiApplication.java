@@ -14,14 +14,4 @@ public class GetYourWayApiApplication {
         SpringApplication.run(GetYourWayApiApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(@NotNull CorsRegistry registry) {
-                registry.addMapping("/weather").allowedOrigins("http://localhost:3000");
-                registry.addMapping("/weather").allowedOrigins("http://99.81.186.138:3000");
-            }
-        };
-    }
 }
