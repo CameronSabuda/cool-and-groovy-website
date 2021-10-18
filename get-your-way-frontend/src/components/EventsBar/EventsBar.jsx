@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import EventsTile from './EventsTile/EventsTile'
 import axios from 'axios'
 import { Container, Row } from 'react-bootstrap'
-import EventsLoader from './Loader'
+import Loader from '../Loader/Loader'
 import './EventsBar.css'
 
 const client = axios.create({
@@ -26,9 +26,9 @@ const EventsBar = () => {
 
 	return (
 		<div className='EventsBar bg-secondary vw-100'>
-			{isLoading && <EventsLoader />}
 			<Container fluid>
 				<Row className='d-flex flex-row scrolling'>
+					{isLoading && <Loader />}
 					{!isLoading &&
 						eventsData.map((event, i) => {
 							return <EventsTile data={event} key={i} />
