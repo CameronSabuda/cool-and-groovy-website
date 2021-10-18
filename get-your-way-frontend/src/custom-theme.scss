@@ -1,10 +1,10 @@
 /*! Tophat `Minco` Bootstrap 4.3.1 theme */
 @import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
-$font-family-base:Nunito;
+$font-family-base: Nunito;
 @import url(https://fonts.googleapis.com/css?family=Crete+Round:200,300,400,700);
-$headings-font-family:Crete Round;
+$headings-font-family: Crete Round;
 
-$enable-grid-classes:false;
+$enable-grid-classes: false;
 $primary: #07689f;
 $secondary: #c9d6df;
 $success: #11d3bc;
@@ -14,14 +14,14 @@ $danger: #f67280;
 $light: #bcd3c3;
 $dark: #4e4e4e;
 
-$primary-alt:#083358;
-$secondary-alt:#F67280;
-$success-alt:#0074E4;
-$danger-alt:#FF4057;
-$info-alt:#74DBEF;
-$warning-alt:#FC3C3C;
-$light-alt:#F2F2F0;
-$dark-alt:#072247;
+$primary-alt: #083358;
+$secondary-alt: #f67280;
+$success-alt: #0074e4;
+$danger-alt: #ff4057;
+$info-alt: #74dbef;
+$warning-alt: #fc3c3c;
+$light-alt: #f2f2f0;
+$dark-alt: #072247;
 
 $theme-colors: (
   "primary": $primary,
@@ -46,31 +46,37 @@ $theme-colors: (
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/utilities";
 
-
-$all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
+$all-colors: map-merge-multiple(
+  $blues,
+  $indigos,
+  $purples,
+  $pinks,
+  $reds,
+  $oranges,
+  $yellows,
+  $greens,
+  $teals,
+  $cyans
+);
 
 $utilities: map-merge(
   $utilities,
   (
-    "color": map-merge(
-      map-get($utilities, "color"),
-      (
-        values: map-merge(
-          map-get(map-get($utilities, "color"), "values"),
-          (
-            $all-colors
-          ),
-        ),
-      ),
-    ),
+    "color":
+      map-merge(
+        map-get($utilities, "color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "color"), "values"),
+              ($all-colors)
+            )
+        )
+      )
   )
 );
 
-
 @import "../node_modules/bootstrap/scss/utilities/api";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
-
-
 
 // Add SASS theme customizations here..
