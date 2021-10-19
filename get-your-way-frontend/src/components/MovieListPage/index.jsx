@@ -6,9 +6,7 @@ import MovieList from "./Elements/MovieList.jsx";
 const index = () => {
 	return (
 		<div>
-			<NavigationBar />
 			<MovieList />
-			<Footer />
 		</div>
 	);
 };
