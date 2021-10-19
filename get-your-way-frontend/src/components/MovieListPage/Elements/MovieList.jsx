@@ -29,7 +29,7 @@ const MovieList = () => {
 						</Card>
 					</Col>
 					<Col sm={12} md={6} lg={3}>
-						<Card as={Link} to={`/map/harryPotter`} lassName='shadow-lg text-center border-0'>
+						<Card as={Link} to={`/map/harryPotter`} className='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={harryPotter} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>

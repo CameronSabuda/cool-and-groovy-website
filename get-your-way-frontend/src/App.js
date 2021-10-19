@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState } from 'react'
-import movies from './movies.json'
+import data from './movies.json'
 
 import NavigationBar from './components/NavigationBar/NavigationBar.jsx'
 import LandingPage from './components/LandingPage/index.jsx'
@@ -14,10 +14,8 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom'
 
 function App() {
 
-	const [moviesData, setMoviesData] = useState({ movies })
-
 	const match = useRouteMatch('/map/:name')
-	const movie = match ? moviesData.find((movie) => movie.name === (match.params.name)) : null
+	const locations = match ? data.movies.find((movie) => movie.name === (match.params.name)).locations : null
 
 	return (
 		<div>
@@ -25,11 +23,11 @@ function App() {
 			<Switch>
 				<Route path='/' component={LandingPage} exact />
 				<Route path='/movies'>
-					<MoviePage movies={moviesData} />
+					<MoviePage/>
 				</Route>
 				<Route path='/signUp' component={SignUp} />
 				<Route path='/map/:name'>
-					<LocationsPage />
+					<LocationsPage locations={locations}/>
 				</Route>
 				<Route path='/map'>
 					<LocationsPage />
