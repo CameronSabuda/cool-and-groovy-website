@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import EventsTile from './EventsTile/EventsTile'
 import axios from 'axios'
-import { Container, Row } from 'react-bootstrap'
+import { Container,  CardGroup } from 'react-bootstrap'
 import Loader from '../Loader/Loader'
 import './EventsBar.css'
 
@@ -25,15 +25,15 @@ const EventsBar = () => {
 	}, [])
 
 	return (
-		<div className='EventsBar bg-secondary vw-100'>
+		<div className='EventsBar bg-secondary vw-100 px-2 py-3'>
 			<Container fluid>
-				<Row className='d-flex flex-row scrolling'>
+				<CardGroup className='d-flex flex-row flex-nowrap scrolling'>
 					{isLoading && <Loader />}
 					{!isLoading &&
 						eventsData.map((event, i) => {
 							return <EventsTile data={event} key={i} />
 						})}
-				</Row>
+				</CardGroup>
 			</Container>
 		</div>
 	)

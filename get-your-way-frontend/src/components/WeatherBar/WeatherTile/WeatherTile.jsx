@@ -5,15 +5,17 @@ import { Row, Col, Container } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 const WeatherTile = ({ data: { day, temp, weather_type, chance_of_rain, icon } }) => {
-
 	return (
 		<Card className='bg-primary bg-gradient m-2 shadow-lg text-center' style={{ minWidth: '18rem' }}>
 			<Card.Header className='text-white bg-primary-alt'>{day}</Card.Header>
+			<Card.Img variant="top" className="mx-auto" src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
+
+
 			<Card.Body className=''>
 				<Container>
-					<Row>
-						<img src={`http://openweathermap.org/img/wn/${icon}@4x.png`} alt='Type of weather' />
-					</Row>
+					{/* <Row>
+						<img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt='Type of weather' />
+					</Row> */}
 					<Row>
 						<Card.Text className='temperature-text text-orange-200'>{temp}°C</Card.Text>
 					</Row>
