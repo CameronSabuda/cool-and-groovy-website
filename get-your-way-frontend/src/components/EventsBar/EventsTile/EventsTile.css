@@ -1,4 +1,8 @@
-.tag {
+.event-tile {
+	margin: 16px;
+}
+
+.event-tile .tag {
 	position: absolute;
 	top: 5%;
 	right: 1%;
@@ -8,12 +12,27 @@
 	background: orange;
 }
 
-.card {
+.event-tile .card {
 	overflow-y: auto;
 }
 
-.card-img-top {
+.event-tile .card-body {
+	padding-left: 4px;
+	padding-right: 4px;
+	
+}
+
+.event-tile .card-text {
+	margin: 6px;
+}
+
+.event-tile .card-img-top {
 	width: 100%;
 	height: 20vh;
 	object-fit: contain;
+}
+
+.event-tile .card-title {
+	font-size: 1em;
+	height: 6vh;
 }
