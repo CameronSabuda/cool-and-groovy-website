@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
-import HeroPic from './hero.svg'
+import HeroPic from '../Assets/hero.svg'
 
 const Centered = {
 	position: 'relative',
