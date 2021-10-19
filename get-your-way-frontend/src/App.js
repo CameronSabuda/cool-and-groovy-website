@@ -1,19 +1,20 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 
-// import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
-// import WeatherBar from "./components/WeatherBar/WeatherBar.jsx";
-// import EventsBar from "./components/EventsBar/EventsBar";
-// import Footer from "./components/Footer/Footer.jsx";
+import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
+import { BrowserRouter as Router } from "react-router-dom";
 import LandingPage from "./components/LandingPage/index.jsx";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	return (
 		<div className='App'>
 			<Router>
+				<NavigationBar />
 				<LandingPage />
+				<Footer />
 			</Router>
+			
 		</div>
 	);
 }
