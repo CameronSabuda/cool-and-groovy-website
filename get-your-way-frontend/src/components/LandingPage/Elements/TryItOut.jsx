@@ -1,8 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
-import Harry from '../Assets/harry-potter.jpeg'
-import Captain from '../Assets/captain-america.jpeg'
-import Chernobyl from '../Assets/chernobyl.jpeg'
+
 
 const styles = {
 	maxHeight: '30%',
@@ -24,13 +22,13 @@ const TryItOut = () => {
 				</Row>
 				<Row className='d-flex align-items-center justify-content-center gy-3'>
 					<Col md={4} sm={12} className="text-center" style={styles}>
-						<Image src={Harry} rounded fluid />
+						<Image src={'images/harry-potter.jpeg'} rounded fluid />
 					</Col>
 					<Col md={4} sm={12} className="text-center" style={styles}>
-						<Image src={Captain} rounded fluid />
+						<Image src={'images/captain-america.jpeg'} rounded fluid />
 					</Col>
 					<Col md={4} sm={12} className="text-center" style={styles}>
-						<Image src={Chernobyl} rounded fluid />
+						<Image src={'images/chernobyl.jpeg'} rounded fluid />
 					</Col>
 				</Row>
 			</Container>
