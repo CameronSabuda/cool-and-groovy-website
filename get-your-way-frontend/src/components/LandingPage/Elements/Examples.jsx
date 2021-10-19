@@ -3,7 +3,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 
 const Examples = () => {
 	return (
-		<div className='bg-light py-5'>
+		<div id="about-us" className='bg-light py-5'>
 			<Container>
 				<Row className='d-flex justify-content-center py-4 px-4'>
 					<Col className="d-flex align-items-center">
