@@ -3,7 +3,7 @@ import "./NavigationBar.css";
 import { Navbar, Nav, Container, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link'
-import logo from "../../logo.svg";
+// import logo from "../../logo.svg";
 
 
 const NavigationBar = () => {
@@ -14,7 +14,7 @@ const NavigationBar = () => {
           <Navbar.Brand as={Link} to="/">
             <Image
               className="d-inline-block align-top logo"
-              src={logo}
+              src={'logo.png'}
               alt="GetYourWay"
               fluid
             />{" "}
