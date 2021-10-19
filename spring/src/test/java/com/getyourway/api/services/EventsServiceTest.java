@@ -13,18 +13,35 @@ public class EventsServiceTest {
 
     @BeforeAll
     static void setup() {
-        latitude = 51.509865;
-        longitude= 0.696969;
+
     }
 
     @AfterAll
     static void tearDown() {
+
     }
+
 
     @Test
     public void getEventsWithin5km_Coordinates_String() {
 
     }
+
+
+//    @Test
+//    public void filterExternalJsonObject() {
+//
+//    }
+//
+//
+//    @Test
+//    public void formatDate() {
+//        //arrange
+//
+//        //act
+//
+//        //assert
+//    }
 
 
 
