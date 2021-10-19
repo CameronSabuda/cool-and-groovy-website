@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./WeatherBar.css";
 import WeatherTile from "./WeatherTile/WeatherTile";
 import Loader from '../Loader/Loader'
-import { Container, Row, CardGroup } from 'react-bootstrap'
+import { Container, CardGroup } from 'react-bootstrap'
 import './WeatherBar.css'
 import axios from "axios";
 
