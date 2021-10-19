@@ -8,8 +8,8 @@ import logo from "../../logo.svg";
 const NavigationBar = () => {
   return (
     <>
-      <Container>
-        <Navbar bg="light" variant="light" expand="md">
+      <Container fluid className="px-0">
+        <Navbar bg="light" variant="light" expand="md" className="px-3">
           <Navbar.Brand as={Link} to="/">
             <Image
               className="d-inline-block align-top logo"

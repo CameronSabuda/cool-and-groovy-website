@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./WeatherBar.css";
 import WeatherTile from "./WeatherTile/WeatherTile";
 import Loader from '../Loader/Loader'
-import { Container, Row } from 'react-bootstrap'
+import { Container, CardGroup } from 'react-bootstrap'
 import './WeatherBar.css'
 import axios from "axios";
 
@@ -25,15 +25,15 @@ const WeatherBar = () => {
 	}, [])
 
 	return (
-		<div className='WeatherBar bg-secondary vw-100'>
+		<div className='WeatherBar bg-secondary vw-100 px-2 py-3'>
 			<Container fluid>
-				<Row className='d-flex flex-row scrolling'>
+				<CardGroup  className='d-flex flex-nowrap scrolling'>
 					{isLoading && <Loader />}
 					{weatherData &&
 						weatherData.map((weather, i) => {
 							return <WeatherTile key={i} data={weather} />
 						})}
-				</Row>
+				</CardGroup>
 			</Container>
 		</div>
 	)
