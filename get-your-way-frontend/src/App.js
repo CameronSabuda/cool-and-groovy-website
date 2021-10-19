@@ -1,6 +1,7 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import "./App.css";
 import React from "react";
+
 import Footer from "./components/Footer/Footer.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -17,6 +18,7 @@ function App() {
       </Router>
     </div>
   );
+
 }
 
 export default App;
