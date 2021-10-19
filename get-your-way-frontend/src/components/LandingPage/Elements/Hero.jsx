@@ -1,6 +1,9 @@
 import React from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import HeroPic from '../Assets/hero.svg'
+import { ReactComponent as ScrollIcon } from '../Assets/mouseScroll.svg'
+
+import { scroller } from 'react-scroll'
 
 const Centered = {
 	position: 'relative',
@@ -12,7 +15,7 @@ const Centered = {
 const Hero = () => {
 	return (
 		<div className='bg-light py-5 px-2'>
-			<Container style={{ height: '100vh' }}>
+			<Container style={{ height: '80vh' }}>
 				<Row className='justify-content-center py-4' style={Centered}>
 					<Col sm={12} md={5} className='mx-2'>
 						<Image src={HeroPic} rounded fluid />
@@ -22,6 +25,9 @@ const Hero = () => {
 					</Col>
 				</Row>
 			</Container>
+					<div className="text-center">
+						<ScrollIcon onSelect={() => scroller.scrollTo('') } />
+					</div>
 		</div>
 	)
 }
