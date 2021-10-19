@@ -25,8 +25,8 @@ const EventsBar = () => {
 	}, [])
 
 	return (
-		<div className='EventsBar bg-secondary vw-100 px-2 py-3'>
-			<Container fluid>
+		<div className='EventsBar bg-secondary px-2 py-3'>
+			<Container>
 				<CardGroup className='d-flex flex-row flex-nowrap scrolling'>
 					{isLoading && <Loader />}
 					{!isLoading &&

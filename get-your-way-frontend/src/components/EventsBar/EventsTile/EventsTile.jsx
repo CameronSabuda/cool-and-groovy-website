@@ -17,7 +17,7 @@ const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from
 			<span className='tag'>{labels[0]}</span>
 			<Card.Img variant='top' className='mx-auto' src={`images/${category}.png`} onError={handleError} />
 			<Card.Body className='d-block pt-1'>
-				<Container className='h-50 mb-3'>
+				<Container className='h-25 d-inline-block'>
 					<Card.Title className='text-white mb-2 text-wrap'>{title}</Card.Title>
 					<Card.Text className='text-white'>{date}</Card.Text>
 				</Container>
@@ -31,7 +31,7 @@ const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from
 							</Row>
 						</Col>
 						{/* Col 2 */}
-						<Col className='text-white '>
+						<Col className='text-white'>
 							<Row>
 								<Button variant='secondary' size='sm' className='mb-2'>
 									{' '}

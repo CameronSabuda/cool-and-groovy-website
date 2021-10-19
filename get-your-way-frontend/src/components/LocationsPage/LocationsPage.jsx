@@ -1,21 +1,20 @@
 import React from 'react'
-import { Container, Row, Col, Card} from 'react-bootstrap'
+import { Container, Row, Col} from 'react-bootstrap'
 import CandyStore from '../CandyStore/CandyStore'
+import './LocationsPage.css'
 
 const LocationsPage = () => {
 	return (
 		
-			<Container >
+			<Container fluid>
 				<Row >
-					<Col >
-					text
+					<Col sm={7}>
+						map goes here
 					</Col>
-					<Col >
-					text
-			<CandyStore />
-			</Col>
+					<Col sm={5}>
+						<CandyStore className="w-25 p-3 h-25 d-inline-block" />
+					</Col>
 				</Row>
-
 			</Container>
 		
 
