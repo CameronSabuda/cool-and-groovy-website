@@ -1,83 +1,63 @@
-/*! Tophat `Minco` Bootstrap 4.3.1 theme */
 @import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
 $font-family-base: Nunito;
 @import url(https://fonts.googleapis.com/css?family=Crete+Round:200,300,400,700);
 $headings-font-family: Crete Round;
 
-$enable-grid-classes: false;
 $primary: #07689f;
 $secondary: #c9d6df;
-$success: #11d3bc;
+$success: #f7e9cc;
 $info: #a2d5f2;
-$warning: #ff7e67;
-$danger: #f67280;
+$warning: #7B4B94;
+$danger: #E71D36;
 $light: #bcd3c3;
-$dark: #4e4e4e;
+$dark: #3c096c;
 
 $primary-alt: #083358;
-$secondary-alt: #f67280;
-$success-alt: #0074e4;
-$danger-alt: #ff4057;
-$info-alt: #74dbef;
-$warning-alt: #fc3c3c;
-$light-alt: #f2f2f0;
-$dark-alt: #072247;
+$secondary-alt: #B48EAE;
+$success-alt: #EEB1D5;
+$info-alt: #A8D4AD;
+$warning-alt: #F5A65B;
+$danger-alt: #E63946;
+$light-alt: #fefae0;
+$dark-alt: #1b4332;
 
 $theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
-  "primary-alt": $primary-alt,
-  "secondary-alt": $secondary-alt,
-  "success-alt": $success-alt,
-  "info-alt": $info-alt,
-  "warning-alt": $warning-alt,
-  "danger-alt": $danger-alt,
-  "light-alt": $light-alt,
-  "dark-alt": $dark-alt
+	'primary': $primary,
+	'secondary': $secondary,
+	'success': $success,
+	'info': $info,
+	'warning': $warning,
+	'danger': $danger,
+	'light': $light,
+	'dark': $dark,
+	'primary-alt': $primary-alt,
+	'secondary-alt': $secondary-alt,
+	'success-alt': $success-alt,
+	'info-alt': $info-alt,
+	'warning-alt': $warning-alt,
+	'danger-alt': $danger-alt,
+	'light-alt': $light-alt,
+	'dark-alt': $dark-alt,
 ) !default;
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/utilities";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
 
-$all-colors: map-merge-multiple(
-  $blues,
-  $indigos,
-  $purples,
-  $pinks,
-  $reds,
-  $oranges,
-  $yellows,
-  $greens,
-  $teals,
-  $cyans
-);
+$all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
 
 $utilities: map-merge(
-  $utilities,
-  (
-    "color":
-      map-merge(
-        map-get($utilities, "color"),
-        (
-          values:
-            map-merge(
-              map-get(map-get($utilities, "color"), "values"),
-              ($all-colors)
-            )
-        )
-      )
-  )
+	$utilities,
+	(
+		'color':
+			map-merge(
+				map-get($utilities, 'color'),
+				(
+					values: map-merge(map-get(map-get($utilities, 'color'), 'values'), ($all-colors)),
+				)
+			),
+	)
 );
 
-@import "../node_modules/bootstrap/scss/utilities/api";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
-
-@import "~bootstrap/scss/bootstrap";
-// Add SASS theme customizations here..
+@import '~bootstrap/scss/utilities/api';
+@import '~bootstrap/scss/bootstrap';
