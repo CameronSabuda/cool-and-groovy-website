@@ -12,7 +12,7 @@ const LocationsPage = () => {
 						map goes here
 					</Col>
 					<Col sm={5}>
-						<CandyStore className="w-25 p-3 h-25 d-inline-block" />
+						<CandyStore />
 					</Col>
 				</Row>
 			</Container>
