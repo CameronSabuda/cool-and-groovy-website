@@ -1,5 +1,21 @@
-.temperature-text {
-  font-size: 4em;
+.weather-tile .weather-image {
+  margin-top: -2.5em;
+  margin-bottom: -4em;
+}
+
+.weather-tile .temperature-text {
+  font-size: 2em;
+}
+
+.weather-tile .weather-type-text {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.weather-tile .card-img-top {
+	width: 100%;
+	height: 20vh;
+	object-fit: contain;
 }
 
 /* .rain-chance-text-container {

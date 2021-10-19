@@ -1,4 +1,4 @@
-/* .WeatherBar {
-  display: flex;
-  flex-direction: row;
-} */
+.WeatherBar {
+  overflow-x: auto;
+    white-space: nowrap;
+}

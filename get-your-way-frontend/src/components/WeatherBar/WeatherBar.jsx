@@ -24,9 +24,9 @@ const WeatherBar = () => {
 	}, [])
 
 	return (
-		<div className='WeatherBar bg-secondary vw-100 px-2 py-3'>
-			<Container fluid>
-				<CardGroup className='d-flex flex-nowrap scrolling'>
+		<div className='WeatherBar bg-secondary px-2 py-3'>
+			<Container>
+				<CardGroup className='d-flex flex-row flex-nowrap scrolling'>
 					{isLoading && <Loader />}
 					{weatherData &&
 						weatherData.map((weather, i) => {

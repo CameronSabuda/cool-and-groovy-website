@@ -23,10 +23,13 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
+              <Nav.Link as={Link} to="/about">
+                About Us
+              </Nav.Link>
               <Nav.Link as={Link} to="/movies">
                 Movies
               </Nav.Link>
-              <Button variant="primary" size="md" as={Link} to="/map">
+              <Button variant="primary" size="md" as={Link} to="/map" className="mx-2">
                 Map
               </Button>
             </Nav>

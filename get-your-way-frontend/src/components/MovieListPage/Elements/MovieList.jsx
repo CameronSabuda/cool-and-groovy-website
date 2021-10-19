@@ -15,7 +15,7 @@ const MovieList = () => {
 	return (
 		<div className='bg-light py-5 vh-100'>
 			<Container>
-				<Row className='d-flex gy-4'>
+				<Row className='movies d-flex gy-4'>
 					<Col sm={12} md={6} lg={3}>
 						<Card className='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={captainAmerica} />
