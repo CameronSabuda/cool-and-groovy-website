@@ -1,22 +1,28 @@
-import "./App.css";
-import React from "react";
+import './App.css'
+import React from 'react'
 
-import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
-import { BrowserRouter as Router } from "react-router-dom";
-import LandingPage from "./components/LandingPage/index.jsx";
-import Footer from "./components/Footer/Footer";
+import NavigationBar from './components/NavigationBar/NavigationBar.jsx'
+import LandingPage from './components/LandingPage/index.jsx'
+import Footer from './components/Footer/Footer'
+import MoviePage from './components/MovieListPage/index'
+import NotFoundPage from './components/Error/NotFoundPage'
+
+import { Switch, Route } from 'react-router-dom'
 
 function App() {
 	return (
-		<div className='App'>
-			<Router>
-				<NavigationBar />
-				<LandingPage />
-				<Footer />
-			</Router>
-			
+		<div>
+			<NavigationBar />
+			<Switch>
+				<Route path='/' component={LandingPage} exact />
+				<Route path='/movies' component={MoviePage} />
+				<Route path='/map' component={MoviePage} />
+				<Route component={NotFoundPage} />
+			</Switch>
+
+			<Footer />
 		</div>
-	);
+	)
 }
 
-export default App;
+export default App
