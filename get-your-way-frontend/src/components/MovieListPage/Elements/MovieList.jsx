@@ -6,10 +6,14 @@ import Chernobyl from "../Assets/chernobyl.jpeg";
 import missionImpossible from "../Assets/mission-impossible.jpeg";
 import "./MovieList.css";
 
+import { Link } from "react-router-dom";
+
 const Styles = {
 	maxHeight: "25%",
 	maxWidth: "100%"
 };
+
+
 
 const MovieList = () => {
 	return (
@@ -17,7 +21,7 @@ const MovieList = () => {
 			<Container>
 				<Row className='movies d-flex gy-4'>
 					<Col sm={12} md={6} lg={3}>
-						<Card className='shadow-lg text-center border-0'>
+						<Card as={Link} to={`/map/captainAmerica`} className='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={captainAmerica} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>Captain America</Card.Title>
@@ -25,7 +29,7 @@ const MovieList = () => {
 						</Card>
 					</Col>
 					<Col sm={12} md={6} lg={3}>
-						<Card className='shadow-lg text-center border-0'>
+						<Card as={Link} to={`/map/harryPotter`} lassName='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={harryPotter} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>
@@ -35,7 +39,7 @@ const MovieList = () => {
 						</Card>
 					</Col>
 					<Col sm={12} md={6} lg={3}>
-						<Card className='shadow-lg text-center border-0'>
+						<Card as={Link} to={`/map/chernobyl`} className='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={Chernobyl} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>Chernobyl</Card.Title>
@@ -43,7 +47,7 @@ const MovieList = () => {
 						</Card>
 					</Col>
 					<Col sm={12} md={6} lg={3}>
-						<Card className='shadow-lg text-center border-0'>
+						<Card as={Link} to={`/map/missionImpossible`} className='shadow-lg text-center border-0'>
 							<Card.Img style={Styles} src={missionImpossible} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>
@@ -57,5 +61,6 @@ const MovieList = () => {
 		</div>
 	);
 };
+
 
 export default MovieList;
