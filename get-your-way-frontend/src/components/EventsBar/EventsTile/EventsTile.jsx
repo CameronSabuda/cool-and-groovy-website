@@ -4,9 +4,9 @@ import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import './EventsTile.css'
 
-const handleError = (e) => {
-	e.target.src = 'images/fire.png'
-}
+// const handleError = (e) => {
+// 	e.target.src = 'images/fire.png'
+// }
 
 const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from_location, category } }) => {
 	let [date, startTime] = start_date.split(' ')
@@ -15,7 +15,7 @@ const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from
 	return (
 		<Card className='event-tile bg-primary shadow-lg text-center' style={{ minWidth: '12rem' }}>
 			<span className='tag'>{labels[0]}</span>
-			<Card.Img variant='top' className='mx-auto' src={`images/${category}.png`} onError={handleError} />
+			<Card.Img variant='top' className='mx-auto' src={`images/${category}.png`} />
 			<Card.Body className='d-block pt-1'>
 				<Card.Title className='text-white text-wrap'>{title}</Card.Title>
 				<Card.Text className='text-white'>{date}</Card.Text>

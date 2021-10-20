@@ -1,0 +1,56 @@
+{
+	"movies": [
+		{
+			"name": "captainAmerica",
+			"locations": [
+				{
+					"lat": "42.32894",
+					"lng": "-2.38291"
+				},
+				{
+					"lat": 41.12312,
+					"lng": 1.2310398
+				}
+			]
+		},
+		{
+			"name": "harryPotter",
+			"locations": [
+				{
+					"lat": "69.32894",
+					"lng": "-9.38291"
+				},
+				{
+					"lat": 42.12312,
+					"lng": 15.2310398
+				}
+			]
+		},
+		{
+			"name": "missionImpossible",
+			"locations": [
+				{
+					"lat": "99.99894",
+					"lng": "-2.38291"
+				},
+				{
+					"lat": 1.12312,
+					"lng": 0.696969
+				}
+			]
+		},
+		{
+			"name": "chernobyl",
+			"locations": [
+				{
+					"lat": "8.32894",
+					"lng": "-7.277"
+				},
+				{
+					"lat": 77.12312,
+					"lng": 14.2310398
+				}
+			]
+		}
+	]
+}
