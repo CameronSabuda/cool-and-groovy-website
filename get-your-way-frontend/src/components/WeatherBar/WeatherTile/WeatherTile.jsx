@@ -1,12 +1,12 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import './WeatherTile.css'
-import { Row, Col, Container, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 const WeatherTile = ({ data: { day, temp, weather_type, chance_of_rain, icon } }) => {
 	return (
-		<Card className='bg-primary bg-gradient m-2 shadow-lg text-center' style={{ minWidth: '9rem' }}>
+		<Card className='weather-tile bg-primary bg-gradient m-2 shadow-lg text-center' style={{ minWidth: '9rem' }}>
 			<Card.Header className='text-white bg-primary-alt'>{day}</Card.Header>
 			<Card.Img variant="top" className="mx-auto weather-image" src={`http://openweathermap.org/img/wn/${icon}@4x.png`} />
 
