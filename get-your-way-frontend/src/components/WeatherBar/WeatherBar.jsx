@@ -13,7 +13,7 @@ const WeatherBar = ({lat, lng}) => {
 	const client = axios.create({
 		baseURL: `http://99.81.186.138:9090/weather?latitude=${lat}&longitude=${lng}`,
 	})
-	
+
 	useEffect(() => {
 		const getWeather = async () => {
 			let response = await client.get()
@@ -22,7 +22,7 @@ const WeatherBar = ({lat, lng}) => {
 			setLoading(false)
 		}
 		getWeather()
-	}, [])
+	}, [lat, lng])
 
 	return (
 		<div className='WeatherBar bg-secondary px-2 py-3'>
