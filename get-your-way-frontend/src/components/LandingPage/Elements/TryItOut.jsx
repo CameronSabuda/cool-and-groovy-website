@@ -9,7 +9,7 @@ const styles = {
 
 const TryItOut = () => {
 	return (
-		<div className='bg-light py-5'>
+		<div id="try-it-out" className='bg-light py-5'>
 			<Container>
 				<Row>
 					<h1>Movies to try out</h1>
