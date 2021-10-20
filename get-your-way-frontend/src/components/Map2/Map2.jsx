@@ -19,21 +19,9 @@ const center = {
 	lng: 0.1276,
 }
 
-// const locations = [
-// 	{
-// 		lat: 51.5072,
-// 		lng: 0.1276,
-// 	},
-// 	{
-// 		lat: 40.7128,
-// 		lng: 74.006,
-// 	},
-// ]
-
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
 
-const Map2 = ({ locations }) => {
-
+const Map2 = ({ locations, setChosenLocation }) => {
 	return (
 		<div style={mapContainer}>
 			<GoogleMapReact
@@ -47,15 +35,19 @@ const Map2 = ({ locations }) => {
 					zoomControl: true,
 					styles: mapStyles,
 				}}
+				onChildClick={(child) => setChosenLocation(locations[child])}
 			>
-				{locations?.map((place, i) => (
+				{locations?.map((location, i) => (
 					<div
 						style={markerContainer}
-						lat={place.lat}
-						lng={place.lng}
+						lat={location.lat}
+						lng={location.lng}
 						key={i}
 					>
-						<LocationOnOutlinedIcon color="secondary" fontSize="large" />
+						<LocationOnOutlinedIcon
+							color='secondary'
+							fontSize='large'
+						/>
 					</div>
 				))}
 			</GoogleMapReact>

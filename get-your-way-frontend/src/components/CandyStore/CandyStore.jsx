@@ -7,13 +7,16 @@ import "./CandyStore.css"
 
 import React from 'react'
 
-const CandyStore = () => {
+const CandyStore = ({chosenLocation: {lat, lng}}) => {
+
+	console.log(lat, lng);
+
 	return (
 		<Container >
 			<p className= "bar-title">Weather</p>
 			<WeatherBar />
 			<p className= "bar-title">Events</p>
-			<EventsBar />	
+			<EventsBar />
 		</Container>
 	)
 }
