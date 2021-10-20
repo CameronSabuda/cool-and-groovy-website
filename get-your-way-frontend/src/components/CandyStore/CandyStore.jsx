@@ -14,9 +14,9 @@ const CandyStore = ({chosenLocation: {lat, lng}}) => {
 	return (
 		<Container >
 			<p className= "bar-title">Weather</p>
-			<WeatherBar />
+			<WeatherBar lat={lat} lng={lng} />
 			<p className= "bar-title">Events</p>
-			<EventsBar />
+			<EventsBar lat={lat} lng={lng} />
 		</Container>
 	)
 }
