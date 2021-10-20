@@ -26,7 +26,7 @@ public class EventsService {
         return filteredJsonObject.toString();
     }
 
-    private JsonObject fetchEventsList(double latitude, double longitude) throws IOException {
+    JsonObject fetchEventsList(double latitude, double longitude) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
