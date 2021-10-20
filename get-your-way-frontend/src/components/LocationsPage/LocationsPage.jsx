@@ -7,7 +7,7 @@ import Map2 from '../Map2/Map2'
 
 
 
-const LocationsPage = () => {
+const LocationsPage = ({locations}) => {
 
 	const [chosenLocation, setChosenLocation] = useState();
 
@@ -31,16 +31,19 @@ const LocationsPage = () => {
 						<Map onClick={getLocationFromMap}/>
 						</div>
 					</Col> */}
-					<Col sm={5}>
+					<Col className="mx-3 my-5">
+						<Map2 locations={locations}/>
+					</Col>
+					<Col sm={4}>
 						<CandyStore location={chosenLocation}/>
 					</Col>
 				</Row>
 
-				<Row>
+				{/* <Row>
 					<Col>
 					<Map2 />
 					</Col>
-				</Row>
+				</Row> */}
 			</Container>
 
 
