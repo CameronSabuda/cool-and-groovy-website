@@ -19,11 +19,11 @@ public class WeatherService {
 
     public String getFiveDayForecast(double latitude, double longitude) throws IOException {
 
-//        JsonObject unfilteredJsonObject = fetchWeatherData(latitude, longitude);
-//
-//        return filterExternalJsonObject(unfilteredJsonObject).toString();
+        JsonObject unfilteredJsonObject = fetchWeatherData(latitude, longitude);
 
-        return "{\"weather\":[{\"day\":\"Sunday\",\"temp\":15,\"chance_of_rain\":0,\"weather_type\":\"Overcastclouds\",\"icon\":\"04d\"},{\"day\":\"Monday\",\"temp\":17,\"chance_of_rain\":0,\"weather_type\":\"Overcastclouds\",\"icon\":\"04d\"},{\"day\":\"Tuesday\",\"temp\":17,\"chance_of_rain\":37,\"weather_type\":\"Lightrain\",\"icon\":\"10d\"},{\"day\":\"Wednesday\",\"temp\":15,\"chance_of_rain\":98,\"weather_type\":\"Lightrain\",\"icon\":\"10d\"},{\"day\":\"Thursday\",\"temp\":14,\"chance_of_rain\":0,\"weather_type\":\"Brokenclouds\",\"icon\":\"04d\"}]}";
+        return filterExternalJsonObject(unfilteredJsonObject).toString();
+
+//        return "{\"weather\":[{\"day\":\"Sunday\",\"temp\":15,\"chance_of_rain\":0,\"weather_type\":\"Overcastclouds\",\"icon\":\"04d\"},{\"day\":\"Monday\",\"temp\":17,\"chance_of_rain\":0,\"weather_type\":\"Overcastclouds\",\"icon\":\"04d\"},{\"day\":\"Tuesday\",\"temp\":17,\"chance_of_rain\":37,\"weather_type\":\"Lightrain\",\"icon\":\"10d\"},{\"day\":\"Wednesday\",\"temp\":15,\"chance_of_rain\":98,\"weather_type\":\"Lightrain\",\"icon\":\"10d\"},{\"day\":\"Thursday\",\"temp\":14,\"chance_of_rain\":0,\"weather_type\":\"Brokenclouds\",\"icon\":\"04d\"}]}";
     }
 
     private JsonObject filterExternalJsonObject(JsonObject unfilteredJsonObject) {
