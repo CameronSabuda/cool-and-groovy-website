@@ -5,8 +5,7 @@ import './WeatherBar.css'
 import Loader from '../Loader/Loader'
 import { Container, CardGroup } from 'react-bootstrap'
 
-
-const WeatherBar = ({lat, lng}) => {
+const WeatherBar = ({ lat, lng }) => {
 	const [weatherData, setWeatherData] = useState()
 	const [isLoading, setLoading] = useState(true)
 

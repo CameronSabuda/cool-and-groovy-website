@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import EventsTile from './EventsTile/EventsTile'
 import axios from 'axios'
-import { Container,  CardGroup } from 'react-bootstrap'
+import { Container, CardGroup } from 'react-bootstrap'
 import Loader from '../Loader/Loader'
 import './EventsBar.css'
 
-
-const EventsBar = ({lat, lng}) => {
+const EventsBar = ({ lat, lng }) => {
 	const [eventsData, setEventsData] = useState()
 	const [isLoading, setLoading] = useState(true)
 

@@ -37,7 +37,7 @@ const Map2 = ({ locations, setChosenLocation }) => {
 				}}
 				onChildClick={(child) => setChosenLocation(locations[child])}
 			>
-				{locations?.map((location, i) => (
+				{locations && locations.map((location, i) => (
 					<div
 						style={markerContainer}
 						lat={location.lat}

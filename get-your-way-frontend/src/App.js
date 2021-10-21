@@ -29,9 +29,9 @@ function App() {
 				<Route path='/map/:name'>
 					<LocationsPage locations={locations}/>
 				</Route>
-				<Route path='/map'>
+				{/* <Route path='/map'>
 					<LocationsPage />
-				</Route>
+				</Route> */}
 				<Route component={NotFoundPage} />
 			</Switch>
 			<Footer />

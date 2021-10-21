@@ -9,11 +9,16 @@ import React, { useState, useEffect } from 'react'
 
 const CandyStore = ({chosenLocation}) => {
 
-	const [coords, setCoords] = useState()
+	const [coords, setCoords] = useState({})
 
 	useEffect(() => {
-		setCoords(chosenLocation)
+		if(chosenLocation) {
+
+			setCoords(chosenLocation)
+		}
 	}, [chosenLocation])
+
+	console.log(coords.lat, coords.lng);
 
 	return (
 		<Container >
