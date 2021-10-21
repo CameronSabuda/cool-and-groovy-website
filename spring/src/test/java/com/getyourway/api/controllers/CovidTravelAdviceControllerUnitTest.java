@@ -12,20 +12,20 @@ import static org.mockito.Mockito.when;
 public class CovidTravelAdviceControllerUnitTest {
 
     @Test
-    public void covid_givenCoordinates_returnsTheSameStringTheCovidTravelAdviceServiceReturns() throws IOException {
+    void covid_givenCoordinates_returnsTheSameStringTheCovidTravelAdviceServiceReturns() throws IOException {
         //arrange
         double latitude = 51.509865;
         double longitude = -0.118092;
 
         CovidTravelAdviceService mockedCovidTravelAdviceService = mock(CovidTravelAdviceService.class);
-        when(mockedCovidTravelAdviceService.getCovidRiskLevel(latitude, longitude)).thenReturn("United Kingdom: Risk Level 3");
+        when(mockedCovidTravelAdviceService.getCovidRiskLevel(latitude, longitude)).thenReturn("United Kingdom: Risk Level 4.1");
         CovidTravelAdviceController covidTravelAdviceController = new CovidTravelAdviceController(mockedCovidTravelAdviceService);
 
         //act
         String actual = covidTravelAdviceController.covid(latitude, longitude);
 
         //assert
-        String expected = "United Kingdom: Risk Level 3";
+        String expected = "United Kingdom: Risk Level 4.1";
         assertEquals(expected, actual);
     }
 

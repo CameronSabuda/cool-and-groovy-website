@@ -11,6 +11,7 @@ import java.io.IOException;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class WeatherController {
+
     private WeatherService service;
 
     public WeatherController(WeatherService service) {
