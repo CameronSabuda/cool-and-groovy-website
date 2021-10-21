@@ -20,34 +20,18 @@ const Examples = () => {
 						</Row>
 						<Row className="">
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing
-								elit. Non facere consequatur quo nulla quidem, culpa
-								laudantium omnis quos doloribus ut, ducimus quod!
-								Animi ex soluta sit fuga. Dignissimos, nam eligendi!
-								Impedit porro error debitis, itaque mollitia ut
-								veniam provident aspernatur temporibus, minus, iusto
-								laborum cumque sunt natus qui.
+								Using GetYourWay you can get real, live info on the locations that 
+								your favourite films have been shot in.
 							</p>
+							<p>By selecting any of the movies listed 
+								on the Movies page, you can see a map of some of the main locations that have
+								been used to shoot the chosen movie.
+							</p>
+							<p>Clicking on any of these locations will 
+								update the widgets to the right of the map with all the info to help you decide
+								on whether this place is the location for your next holiday!</p>
+							
 						</Row>
-					</Col>
-				</Row>
-				<Row className='d-flex justify-content-center py-4 px-4'>
-					<Col>
-						<h2>Show Events</h2>
-						<p>
-							Lorem ipsum dolor sit, amet consectetur adipisicing
-							elit. Ad nesciunt at assumenda, ab laboriosam
-							debitis. Iusto rem cumque voluptate adipisci, a,
-							explicabo laborum necessitatibus quas repellat
-							voluptas placeat cupiditate at.
-						</p>
-					</Col>
-					<Col>
-						<Image
-							src='https://picsum.photos/600/800'
-							rounded
-							fluid
-						/>
 					</Col>
 				</Row>
 			</Container>
