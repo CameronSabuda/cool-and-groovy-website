@@ -5,18 +5,22 @@ import "./CandyStore.css"
 
 
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const CandyStore = ({chosenLocation: {lat, lng}}) => {
+const CandyStore = ({chosenLocation}) => {
 
-	console.log(lat, lng);
+	const [coords, setCoords] = useState()
+
+	useEffect(() => {
+		setCoords(chosenLocation)
+	}, [chosenLocation])
 
 	return (
 		<Container >
 			<p className= "bar-title">Weather</p>
-			<WeatherBar lat={lat} lng={lng} />
+			<WeatherBar lat={coords.lat} lng={coords.lng} />
 			<p className= "bar-title">Events</p>
-			<EventsBar lat={lat} lng={lng} />
+			<EventsBar lat={coords.lat} lng={coords.lng} />
 		</Container>
 	)
 }

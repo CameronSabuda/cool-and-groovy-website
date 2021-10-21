@@ -23,7 +23,7 @@ const EventsBar = ({lat, lng}) => {
 			setLoading(false)
 		}
 		getEvents()
-	}, [lat, lng, client])
+	}, [])
 
 	return (
 		<div className='EventsBar bg-secondary px-2 py-3'>

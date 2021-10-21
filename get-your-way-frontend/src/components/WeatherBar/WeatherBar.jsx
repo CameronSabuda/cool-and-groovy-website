@@ -22,7 +22,7 @@ const WeatherBar = ({lat, lng}) => {
 			setLoading(false)
 		}
 		getWeather()
-	}, [lat, lng, client])
+	}, [])
 
 	return (
 		<div className='WeatherBar bg-secondary px-2 py-3'>
