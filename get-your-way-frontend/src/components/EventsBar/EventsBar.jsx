@@ -9,11 +9,11 @@ const EventsBar = ({ lat, lng }) => {
 	const [eventsData, setEventsData] = useState()
 	const [isLoading, setLoading] = useState(true)
 
-	const client = axios.create({
-		baseURL: `http://99.81.186.138:9090/events?latitude=${lat}&longitude=${lng}`,
-	})
-
 	useEffect(() => {
+		const client = axios.create({
+			baseURL: `http://99.81.186.138:9090/events?latitude=${lat}&longitude=${lng}`,
+		})
+
 		const getEvents = async () => {
 			let response = await client.get()
 			let { events } = response.data
@@ -22,7 +22,7 @@ const EventsBar = ({ lat, lng }) => {
 			setLoading(false)
 		}
 		getEvents()
-	}, [])
+	}, [lat, lng])
 
 	return (
 		<div className='EventsBar bg-secondary px-2 py-3'>
