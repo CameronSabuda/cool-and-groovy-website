@@ -1,25 +1,30 @@
-import React from 'react'
-import { Container, Row, Col} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
 import CandyStore from '../CandyStore/CandyStore'
 import './LocationsPage.css'
+import Map2 from '../Map2/Map2'
 
-const LocationsPage = ({locations}) => {
+const LocationsPage = ({ locations }) => {
+	const [chosenLocation, setChosenLocation] = useState({})
+
+	const defaultLocation = {
+		lat: 51.5072,
+		lng: 0.1276,
+	}
+
 	return (
-
-			<Container id="locations-container" className="" fluid>
-				<Row >
-					<Col sm={7}>
-						map goes here
-						{console.table(locations)}
-					</Col>
-					<Col sm={5}>
-						<CandyStore />
-					</Col>
-				</Row>
-			</Container>
-
-
-
+		<Container fluid>
+			<Row>
+				<Col className='mx-3 my-5'>
+					<Map2 locations={locations} setChosenLocation={setChosenLocation} />
+				</Col>
+				<Col sm={4}>
+					<CandyStore
+						chosenLocation={chosenLocation || defaultLocation}
+					/>
+				</Col>
+			</Row>
+		</Container>
 	)
 }
 

@@ -24,5 +24,6 @@
         "eslint-plugin-prettier"
     ],
     "rules": {
+        "react/prop-types": 0
     }
 }

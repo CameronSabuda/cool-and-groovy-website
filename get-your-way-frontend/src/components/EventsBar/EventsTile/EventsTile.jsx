@@ -4,9 +4,6 @@ import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import './EventsTile.css'
 
-// const handleError = (e) => {
-// 	e.target.src = 'images/fire.png'
-// }
 
 const EventsTile = ({ data: { labels, title, start_date, end_date, distance_from_location, category } }) => {
 	let [date, startTime] = start_date.split(' ')

@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState } from 'react'
+import React from 'react'
 import data from './movies.json'
 
 import NavigationBar from './components/NavigationBar/NavigationBar.jsx'
@@ -29,9 +29,9 @@ function App() {
 				<Route path='/map/:name'>
 					<LocationsPage locations={locations}/>
 				</Route>
-				<Route path='/map'>
+				{/* <Route path='/map'>
 					<LocationsPage />
-				</Route>
+				</Route> */}
 				<Route component={NotFoundPage} />
 			</Switch>
 			<Footer />
