@@ -23,7 +23,7 @@ const WeatherTile = ({ data: { day, temp, weather_type, chance_of_rain, icon } }
 
 					<div className='text-orange-100'>
 						<div className='align-items-center' sm={2}>
-							<Card.Text weather-type-text>{weather_type}</Card.Text>
+							<Card.Text className="weather-type-text">{weather_type}</Card.Text>
 						</div>
 						</div>
 						<div>
