@@ -22,7 +22,7 @@ public class CovidTravelAdviceService {
         return filteredJsonObject.toString();
     }
 
-    JsonObject fetchCovidRiskLevel(String countryCode) throws IOException {
+    private JsonObject fetchCovidRiskLevel(String countryCode) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -54,7 +54,7 @@ public class CovidTravelAdviceService {
         return filteredCovidDataObject;
     }
 
-    String convertCoordinatesToCountryCode(double latitude, double longitude) throws IOException {
+    private String convertCoordinatesToCountryCode(double latitude, double longitude) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()

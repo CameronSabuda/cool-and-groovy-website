@@ -70,7 +70,7 @@ public class WeatherService {
 
     }
 
-    JsonObject fetchWeatherData(double latitude, double longitude) throws IOException {
+    private JsonObject fetchWeatherData(double latitude, double longitude) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + OPENWEATHERMAP_API_KEY;
 
