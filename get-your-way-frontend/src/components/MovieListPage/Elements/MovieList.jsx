@@ -33,7 +33,7 @@ const MovieList = () => {
 							<Card.Img style={Styles} src={harryPotter} />
 							<Card.ImgOverlay className='text-white'>
 								<Card.Title>
-									Harry Potter and The Deathly Hallows
+									Harry Potter
 								</Card.Title>
 							</Card.ImgOverlay>
 						</Card>

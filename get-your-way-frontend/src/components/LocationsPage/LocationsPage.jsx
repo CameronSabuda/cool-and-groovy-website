@@ -4,23 +4,20 @@ import CandyStore from '../CandyStore/CandyStore'
 import './LocationsPage.css'
 import Map2 from '../Map2/Map2'
 
-const LocationsPage = ({ locations }) => {
+const LocationsPage = ({ locations}) => {
 	const [chosenLocation, setChosenLocation] = useState({})
 
-	const defaultLocation = {
-		lat: 51.5072,
-		lng: 0.1276,
-	}
 
 	return (
 		<Container fluid>
 			<Row>
 				<Col className='mx-3 my-5'>
+				<p className= "bar-title">Please click on a marker</p>
 					<Map2 locations={locations} setChosenLocation={setChosenLocation} />
 				</Col>
 				<Col sm={4}>
 					<CandyStore
-						chosenLocation={chosenLocation || defaultLocation}
+						chosenLocation={chosenLocation}
 					/>
 				</Col>
 			</Row>
